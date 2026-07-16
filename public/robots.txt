@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /templates/
+Disallow: /lang/
+
+Sitemap: https://evsmartroute.com/sitemap.xml
+

@@ -1,0 +1,78 @@
+<?php
+return [
+    'seo' => [
+        'home' => ['title' => 'EVSmartRoute — Intelligent EV route planning', 'description' => 'Plan your EV journey with real-world range, compatible charging stations, prices and live traffic.'],
+        'placeholder' => ['title' => 'EVSmartRoute — Page in progress', 'description' => 'This EVSmartRoute section is being developed.'],
+    ],
+    'nav' => ['home' => 'Home', 'features' => 'Features', 'network' => 'Charging network', 'pricing' => 'Pricing', 'blog' => 'Blog', 'data' => 'Live data'],
+    'actions' => ['plan_route' => 'Plan a route', 'see_how' => 'See how it works', 'login' => 'Log in', 'start_free' => 'Start for free', 'start_trial' => 'Start Premium Trial', 'back_home' => 'Back home'],
+    'accessibility' => ['skip' => 'Skip to main content', 'menu' => 'Open menu', 'primary_nav' => 'Primary navigation', 'language' => 'Choose language'],
+    'home' => [
+        'hero' => [
+            'eyebrow' => 'EV journeys without the unknown', 'title' => 'Drive farther. Charge smarter.',
+            'description' => 'Intelligent EV route planning with real-world range, compatible charging stations, prices and live traffic.',
+            'trust' => 'Free plan · 1 month Premium Trial · No card required',
+        ],
+        'preview' => ['aria' => 'EV route planning preview', 'route' => 'Sofia → Thessaloniki', 'charge_stop' => '1 optimised charging stop'],
+        'simulator' => [
+            'eyebrow' => 'Range & Climate Simulator', 'title' => 'See how conditions change your range', 'live' => 'Live',
+            'estimated_range' => 'Estimated real-world range', 'climate_loss' => 'Climate loss', 'temperature' => 'Outside temperature',
+            'vehicle' => 'Electric vehicle',
+            'insight_cold' => 'Cold weather increases energy use for cabin and battery heating.',
+            'insight_mild' => 'The temperature is within the optimal range for high efficiency.',
+            'insight_hot' => 'Cabin and battery cooling slightly increase energy consumption.',
+        ],
+        'stats' => [
+            'aria' => 'Platform coverage', 'locations' => 'charging locations across the Balkans', 'connectors' => 'charging connectors',
+            'operators' => 'supported operators', 'models' => 'electric vehicle models',
+        ],
+        'compatibility' => [
+            'eyebrow' => 'EV Catalog', 'title' => 'Compatible with your electric car.',
+            'description' => 'Choose a model to check the available battery, efficiency and charging-curve data.',
+            'placeholder' => 'Check your vehicle...', 'brands' => 'Supported vehicle brands',
+            'supported' => 'is 100% supported with a detailed charging curve', 'no_results' => 'No model was found in the current catalogue.',
+        ],
+        'battery' => [
+            'eyebrow' => 'Battery Intelligence', 'title' => 'Real-world range, not a brochure promise.',
+            'description' => 'The algorithm forecasts energy throughout the journey and preserves a safe reserve for unexpected conditions.',
+            'factor_temperature' => 'Temperature, climate control and seasonal tyres', 'factor_load' => 'Passengers, luggage and terrain profile',
+            'factor_buffer' => 'Critical reserve and adaptive buffer below 10%', 'learn_more' => 'Explore Battery Intelligence',
+            'trip_forecast' => 'Trip forecast', 'calculated' => 'Calculated', 'visual_aria' => 'Forecast battery level',
+            'departure' => 'Departure', 'charging' => 'Before charging', 'arrival' => 'Arrival',
+            'safe_buffer' => 'The route maintains a safe reserve above the critical buffer.',
+        ],
+        'network' => [
+            'eyebrow' => 'One network. More choice.', 'title' => 'Charging infrastructure across the Balkans and Europe.',
+            'description' => 'Compare operators, connectors and power in one consistent interface.',
+        ],
+        'pricing' => [
+            'eyebrow' => 'Straightforward plans', 'title' => 'Start free. Travel without limits.',
+            'description' => 'No hidden fees and no card required for the trial.', 'free_name' => 'FREE', 'forever' => 'forever',
+            'free_routes' => 'Up to 2 plans per day', 'free_distance' => 'Routes up to 300 km', 'free_vehicle' => '1 vehicle in your garage',
+            'no_multistop' => 'No multi-stop routes', 'no_traffic' => 'No Live Traffic', 'popular' => 'Most popular',
+            'month' => 'month', 'trial' => '1 month free', 'unlimited_routes' => 'Unlimited route plans',
+            'long_routes' => 'Long international routes', 'multistop' => 'Multi-stop planning',
+            'unlimited_garage' => 'Unlimited EV garage', 'live_traffic' => 'Live Traffic by TomTom',
+            'compare_all' => 'Compare all features',
+        ],
+        'foundation' => [
+            'eyebrow' => 'More confidence on the road', 'title' => 'Everything that matters, in one clear plan.',
+            'description' => 'EVSmartRoute combines your car, battery, route and charging infrastructure into one dependable forecast.',
+            'routes' => ['title' => 'Intelligent routes', 'text' => 'Charging stops are selected for your car, battery and actual journey.'],
+            'battery' => ['title' => 'Battery Intelligence', 'text' => 'A realistic SoC forecast at departure, throughout the route and on arrival.'],
+            'network' => ['title' => 'Charging network', 'text' => 'Operators, power, connectors and current status in one unified view.'],
+        ],
+        'cta' => ['eyebrow' => 'Ready to go', 'title' => 'Your next electric journey starts here.', 'description' => 'Create a free account and plan your first route.'],
+    ],
+    'footer' => [
+        'description' => 'Intelligent EV route planning across the Balkans and Europe.', 'product' => 'Product',
+        'route_planning' => 'Route planning', 'company' => 'Company', 'about' => 'About us', 'faq' => 'FAQ', 'contact' => 'Contact',
+        'legal' => 'Legal', 'privacy' => 'Privacy', 'terms' => 'Terms', 'cookies' => 'Cookies', 'eu_data' => 'EU Data Act',
+        'rights' => 'All rights reserved.', 'status' => 'All systems operational',
+    ],
+    'placeholder' => [
+        'eyebrow' => 'Next stage', 'title' => 'This page is being prepared.',
+        'text' => 'Its architecture and URL are ready. The content will be created in the next stages.',
+        'not_found' => 'Page not found.', 'not_found_text' => 'Check the address or return to the home page.',
+    ],
+];

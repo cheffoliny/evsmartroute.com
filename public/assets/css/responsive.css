@@ -1,0 +1,97 @@
+@media (max-width: 1080px) {
+    .primary-nav { gap: 18px; }
+    .primary-nav a { font-size: .78rem; }
+    .login-link { display: none; }
+    .hero__inner { gap: 36px; }
+    .operator-grid { grid-template-columns: repeat(3, 1fr); }
+    .battery-layout { gap: 50px; }
+    .content-page-grid { grid-template-columns: repeat(2, 1fr); }
+    .data-hero-layout { gap: 32px; }
+    .data-flow { padding-inline: 14px; }
+    .flow-node { min-width: 105px; }
+}
+
+@media (max-width: 900px) {
+    :root { --header-height: 70px; }
+    .container { width: min(calc(100% - 32px), var(--container)); }
+    .site-header__inner { justify-content: space-between; }
+    .menu-toggle { display: block; order: 3; }
+    .primary-nav { position: fixed; inset: var(--header-height) 16px auto; display: grid; gap: 0; padding: 12px; border: 1px solid var(--glass-border); border-radius: 18px; background: rgba(11,15,25,.96); box-shadow: 0 30px 60px rgba(0,0,0,.4); backdrop-filter: blur(16px); transition: .2s ease; }
+    .primary-nav:not(.is-open) { transform: translateY(-12px); visibility: hidden; opacity: 0; pointer-events: none; }
+    .primary-nav.is-open { transform: translateY(0); visibility: visible; opacity: 1; }
+    .primary-nav a { padding: 13px 12px; font-size: .9rem; }
+    .header-actions .button, .login-link { display: none; }
+    .hero { min-height: auto; padding: 80px 0 60px; }
+    .hero__inner { grid-template-columns: 1fr; }
+    .hero__content { text-align: center; }
+    .hero__content h1, .hero__lead { margin-inline: auto; }
+    .button-group { justify-content: center; }
+    .range-simulator { width: min(100%, 680px); margin-inline: auto; text-align: left; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-item:nth-child(3)::before { display: none; }
+    .battery-layout { grid-template-columns: 1fr; }
+    .inner-hero { min-height: 540px; }
+    .content-page-grid { grid-template-columns: 1fr; }
+    .faq-layout, .showcase-row, .data-hero-layout, .offline-layout { grid-template-columns: 1fr; }
+    .showcase-row--reverse .showcase-copy, .showcase-row--reverse .showcase-visual { order: initial; }
+    .showcase-row { gap: 40px; }
+    .feature-showcase { gap: 90px; }
+    .showcase-visual { min-height: 340px; }
+    .data-hero .inner-hero__content { padding-top: 30px; }
+    .data-layer-grid { grid-template-columns: 1fr; }
+    .data-layer-card { min-height: auto; }
+    .transparency-panel { grid-template-columns: 1fr; gap: 20px; }
+    .cpo-panel { align-items: flex-start; flex-direction: column; }
+    .cpo-actions { width: 100%; }
+    .detailed-plan-grid { width: min(100%, 680px); }
+    .battery-copy { max-width: 680px; }
+    .cta-panel { align-items: flex-start; flex-direction: column; }
+    .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
+    .footer-brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 600px) {
+    .section { padding: 82px 0; }
+    h1 { font-size: clamp(2.75rem, 14vw, 4.2rem); }
+    .language-switcher { margin-left: auto; }
+    .range-simulator { padding: 23px 20px; }
+    .simulator-header { align-items: flex-start; }
+    .simulator-header h2 { font-size: 1.35rem; }
+    .simulator-header .live-badge { margin-top: 1px; }
+    .simulator-range strong { font-size: 2.75rem; }
+    .simulator-controls { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .stat-item { min-height: 125px; padding: 22px 12px; }
+    .stat-item:nth-child(3)::before { display: block; }
+    .stat-item:nth-child(odd)::before { display: none; }
+    .stat-item:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.07); }
+    .vehicle-search { min-height: 62px; padding: 7px 12px; }
+    .vehicle-search__icon { width: 35px; height: 35px; }
+    .vehicle-search input { font-size: .82rem; }
+    .vehicle-search__hint { display: none; }
+    .brand-marquee { gap: 18px 24px; margin-top: 48px; }
+    .battery-dashboard { padding: 24px 18px; }
+    .battery-visual { min-height: 220px; }
+    .battery-shell { width: 180px; height: 84px; }
+    .battery-shell::after { top: 23px; }
+    .operator-grid { grid-template-columns: repeat(2, 1fr); }
+    .plan-grid { grid-template-columns: 1fr; }
+    .detailed-plan-grid { grid-template-columns: 1fr; }
+    .billing-switch { width: 100%; }
+    .billing-switch button { min-width: 0; flex: 1; padding-inline: 10px; }
+    .comparison-table th, .comparison-table td { min-width: 125px; padding: 16px 14px; }
+    .faq-layout { gap: 30px; }
+    .showcase-visual { min-height: 290px; }
+    .data-flow { align-items: stretch; flex-direction: column; }
+    .data-flow > i { transform: rotate(90deg); text-align: center; }
+    .flow-node { min-height: 105px; }
+    .offline-visual { min-height: 330px; }
+    .transparency-panel, .cpo-panel { padding: 32px 24px; }
+    .cpo-actions .button { width: 100%; }
+    .plan-card { min-height: auto; padding: 28px 24px; }
+    .cta-panel { padding: 32px 24px; }
+    .cta-panel .button { width: 100%; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 42px 28px; }
+    .footer-brand { grid-column: 1 / -1; }
+    .footer-bottom { align-items: flex-start; flex-direction: column; gap: 14px; }
+}
