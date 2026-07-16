@@ -1,3 +1,12 @@
+@media (max-width: 1350px) {
+    .brand__logo--mark { height: 30px; }
+    .brand__logo--text { height: 28px; }
+    .site-header__inner { gap: 18px; }
+    .primary-nav { gap: 14px; }
+    .header-actions { gap: 10px; }
+    .login-link { display: none; }
+}
+
 @media (max-width: 1080px) {
     .primary-nav { gap: 18px; }
     .primary-nav a { font-size: .78rem; }
@@ -9,24 +18,42 @@
     .data-hero-layout { gap: 32px; }
     .data-flow { padding-inline: 14px; }
     .flow-node { min-width: 105px; }
+    .site-header__inner { gap: 22px; }
+    .header-actions { gap: 12px; }
+    .brand__logo--mark { height: 28px; }
+    .brand__logo--text { height: 26px; }
 }
 
 @media (max-width: 900px) {
     :root { --header-height: 70px; }
     .container { width: min(calc(100% - 32px), var(--container)); }
     .site-header__inner { justify-content: space-between; }
+    .brand__logo--mark { height: 26px; }
+    .brand__logo--text { height: 23px; }
     .menu-toggle { display: block; order: 3; }
     .primary-nav { position: fixed; inset: var(--header-height) 16px auto; display: grid; gap: 0; padding: 12px; border: 1px solid var(--glass-border); border-radius: 18px; background: rgba(11,15,25,.96); box-shadow: 0 30px 60px rgba(0,0,0,.4); backdrop-filter: blur(16px); transition: .2s ease; }
+    [data-theme="light"] .primary-nav { background: rgba(255,255,255,.97); box-shadow: 0 30px 60px rgba(15,23,42,.15); }
     .primary-nav:not(.is-open) { transform: translateY(-12px); visibility: hidden; opacity: 0; pointer-events: none; }
     .primary-nav.is-open { transform: translateY(0); visibility: visible; opacity: 1; }
     .primary-nav a { padding: 13px 12px; font-size: .9rem; }
     .header-actions .button, .login-link { display: none; }
-    .hero { min-height: auto; padding: 80px 0 60px; }
+    .hero--fullbleed { min-height: 720px; padding: 0; }
+    .hero__scrim { background: linear-gradient(90deg, rgba(11,15,25,.94), rgba(11,15,25,.72) 70%, rgba(11,15,25,.28)); }
     .hero__inner { grid-template-columns: 1fr; }
-    .hero__content { text-align: center; }
-    .hero__content h1, .hero__lead { margin-inline: auto; }
-    .button-group { justify-content: center; }
-    .range-simulator { width: min(100%, 680px); margin-inline: auto; text-align: left; }
+    .hero__content { max-width: 600px; text-align: left; }
+    .range-simulator { display: block; width: min(100%, 680px); margin-inline: auto; padding: 30px; text-align: left; }
+    .simulator-range { min-height: 0; padding-left: 0; border-left: 0; }
+    .range-meter { margin: 20px 0 28px; }
+    .simulator-controls { gap: 20px; }
+    .simulator-insight { margin-top: 22px; }
+    .hero-hud { position: absolute; inset: 0; min-height: 0; }
+    .hud-waypoint--charge { left: auto; right: 4%; top: 45%; }
+    .hud-waypoint--finish { right: 5%; top: 18%; }
+    .hud-waypoint--start { display: none; }
+    .simulator-stage { padding: 90px 0; pointer-events: auto; }
+    .simulator-lab { grid-template-columns: 1fr; }
+    .simulator-stage__inner { width: min(100%,680px); margin-inline: auto; }
+    .simulator-lab__visual { width: min(100%,760px); margin-inline: auto; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
     .stat-item:nth-child(3)::before { display: none; }
     .battery-layout { grid-template-columns: 1fr; }
@@ -38,6 +65,7 @@
     .feature-showcase { gap: 90px; }
     .showcase-visual { min-height: 340px; }
     .data-hero .inner-hero__content { padding-top: 30px; }
+    .data-visual-stack { min-height: 560px; }
     .data-layer-grid { grid-template-columns: 1fr; }
     .data-layer-card { min-height: auto; }
     .transparency-panel { grid-template-columns: 1fr; gap: 20px; }
@@ -54,7 +82,17 @@
     .section { padding: 82px 0; }
     h1 { font-size: clamp(2.75rem, 14vw, 4.2rem); }
     .language-switcher { margin-left: auto; }
+    .brand { gap: 7px; }
+    .brand__logo--mark { height: 25px; }
+    .brand__logo--text { height: 20px; }
     .range-simulator { padding: 23px 20px; }
+    .hero--fullbleed { min-height: 690px; }
+    .hero__backdrop { object-position: 62% center; }
+    .hero__scrim { background: linear-gradient(90deg, rgba(11,15,25,.96), rgba(11,15,25,.78) 76%, rgba(11,15,25,.42)); }
+    .hero__inner { padding-block: 88px 64px; }
+    .hero__title { font-size: clamp(2.05rem,10vw,2.75rem); }
+    .hero-hud, .hud-waypoint { display: none; }
+    .simulator-stage { padding: 72px 0; }
     .simulator-header { align-items: flex-start; }
     .simulator-header h2 { font-size: 1.35rem; }
     .simulator-header .live-badge { margin-top: 1px; }
@@ -71,6 +109,7 @@
     .vehicle-search__hint { display: none; }
     .brand-marquee { gap: 18px 24px; margin-top: 48px; }
     .battery-dashboard { padding: 24px 18px; }
+    .battery-photo, .battery-photo img { min-height: 360px; height: 360px; }
     .battery-visual { min-height: 220px; }
     .battery-shell { width: 180px; height: 84px; }
     .battery-shell::after { top: 23px; }
@@ -82,7 +121,12 @@
     .comparison-table th, .comparison-table td { min-width: 125px; padding: 16px 14px; }
     .faq-layout { gap: 30px; }
     .showcase-visual { min-height: 290px; }
+    .battery-feature-widget { min-height: 440px; }
+    .battery-feature-widget__hud { right: 18px; bottom: 18px; width: calc(100% - 36px); }
     .data-flow { align-items: stretch; flex-direction: column; }
+    .data-visual-stack { min-height: 680px; }
+    .data-visual-stack::after { background: linear-gradient(180deg, transparent 8%, rgba(7,11,18,.9) 55%); }
+    .data-visual-stack .data-flow { right: 12px; bottom: 12px; left: 12px; }
     .data-flow > i { transform: rotate(90deg); text-align: center; }
     .flow-node { min-height: 105px; }
     .offline-visual { min-height: 330px; }
@@ -94,4 +138,6 @@
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 42px 28px; }
     .footer-brand { grid-column: 1 / -1; }
     .footer-bottom { align-items: flex-start; flex-direction: column; gap: 14px; }
+    .story-visual, .story-visual img { min-height: 400px; height: 400px; }
+    .story-visual figcaption { right: 22px; bottom: 22px; left: 22px; align-items: flex-start; flex-direction: column; }
 }

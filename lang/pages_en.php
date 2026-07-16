@@ -36,7 +36,7 @@ return ['pages' => [
     ],
     'real-time-data' => [
         'seo_title' => 'Real-time charging station data | EVSmartRoute', 'seo_description' => 'How EVSmartRoute processes status, availability, station and pricing data through OCPI, OCPP and partner APIs.',
-        'eyebrow' => 'Data transparency', 'title' => 'From operator to map — with a clear status.', 'intro' => 'EVSmartRoute combines partner live feeds with verified static information without presenting stale status as guaranteed availability.',
+        'eyebrow' => 'Data transparency', 'title' => 'From operator to map — with a clear status.', 'intro' => 'EVSmartRoute combines partner live feeds with verified static information without presenting stale status as guaranteed availability.', 'image_alt' => 'Modern ultra-fast charging station with an active status',
         'freshness' => 'Partner statuses are usually refreshed approximately every minute', 'flow_aria' => 'Data flow from operators through EVSmartRoute to the application',
         'flow_operators' => 'CPO operators', 'flow_normalize' => 'Validation and normalisation', 'flow_app' => 'Application and map',
         'layers_eyebrow' => 'Three layers, one dependable view', 'layers_title' => 'What sits behind every point on the map', 'layers_intro' => 'Different information types have different update frequencies and confidence levels.',
@@ -65,7 +65,7 @@ return ['pages' => [
         ],
     ],
     'charging-network' => [
-        'seo_title' => 'EV charging network', 'seo_description' => 'Operators, connectors, power and availability in one place.', 'eyebrow' => 'Charging Network', 'title' => 'More operators. One consistent view.', 'intro' => 'Find compatible stations without jumping between multiple maps.', 'cta' => 'Open the map',
+        'seo_title' => 'EV charging network', 'seo_description' => 'Operators, connectors, power and availability in one place.', 'eyebrow' => 'Charging Network', 'title' => 'More operators. One consistent view.', 'intro' => 'Find compatible stations without jumping between multiple maps.', 'cta' => 'Open the map', 'image_alt' => 'Electric vehicle at a modern mountain charging station', 'visual_caption' => 'One map for regional and international charging networks.',
         'sections' => [
             ['icon' => '⚡', 'title' => 'Connectors and power', 'text' => 'CCS2, CHAdeMO and Type 2 with clear AC/DC power.', 'items' => ['Power filter', 'Vehicle compatibility']],
             ['icon' => '◉', 'title' => 'Operator and status', 'text' => 'Unified data from regional and international networks.', 'items' => ['Live partner status', 'Last update']],
@@ -153,4 +153,3 @@ return ['pages' => [
         ],
     ],
 ]];
-

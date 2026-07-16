@@ -1,6 +1,21 @@
 (() => {
     'use strict';
 
+    const loader = document.getElementById('page-loader');
+    if (loader) {
+        let seen = false;
+        try { seen = sessionStorage.getItem('esr-loader-seen') === '1'; } catch (_) {}
+        const hideLoader = () => {
+            loader.classList.add('is-hidden');
+            try { sessionStorage.setItem('esr-loader-seen', '1'); } catch (_) {}
+        };
+        if (seen || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            hideLoader();
+        } else {
+            window.setTimeout(hideLoader, 720);
+        }
+    }
+
     const header = document.querySelector('[data-header]');
     const menuToggle = document.querySelector('[data-menu-toggle]');
     const navigation = document.querySelector('[data-navigation]');
@@ -39,4 +54,3 @@
 
     elements.forEach((element) => observer.observe(element));
 })();
-

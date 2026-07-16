@@ -3,8 +3,7 @@
     <div class="container footer-grid">
         <div class="footer-brand">
             <a class="brand" href="<?= e(localized_url()) ?>">
-                <img class="brand__logo" src="<?= e(asset_url('/assets/images/evsmartroute-logo.webp')) ?>" width="128" height="36" alt="">
-                <span class="brand__name">EVSmart<span>Route</span></span>
+                <img class="brand__logo footer-brand__logo" src="<?= e(asset_url('/assets/images/evsmartroute-text-logo-light.webp')) ?>" data-theme-logo data-logo-light="<?= e(asset_url('/assets/images/evsmartroute-text-logo-dark.webp')) ?>" data-logo-dark="<?= e(asset_url('/assets/images/evsmartroute-text-logo-light.webp')) ?>" width="1024" height="100" alt="EVSmartRoute">
             </a>
             <p><?= e(t('footer.description')) ?></p>
         </div>

@@ -2,13 +2,19 @@
 declare(strict_types=1);
 
 $page = $translations['pages'][$routeName] ?? [];
+$localizedEyebrows = [
+    'route-planning' => 'Интелигентно планиране на маршрут',
+    'charging-network' => 'Зарядна мрежа',
+    'battery-intelligence' => 'Интелигентност за батерията',
+    'live-traffic' => 'Трафик в реално време',
+];
 require TEMPLATE_PATH . '/header.php';
 ?>
 <main id="main-content">
     <section class="inner-hero section">
         <div class="inner-hero__glow" aria-hidden="true"></div>
         <div class="container inner-hero__content reveal">
-            <p class="eyebrow"><?= e($page['eyebrow'] ?? 'EVSmartRoute') ?></p>
+            <p class="eyebrow"><?= e($lang === 'bg' ? ($localizedEyebrows[$routeName] ?? ($page['eyebrow'] ?? 'EVSmartRoute')) : ($page['eyebrow'] ?? 'EVSmartRoute')) ?></p>
             <h1><?= e($page['title'] ?? $pageTitle) ?></h1>
             <p><?= e($page['intro'] ?? $pageDescription) ?></p>
             <?php if (!empty($page['cta'])): ?>
@@ -16,6 +22,20 @@ require TEMPLATE_PATH . '/header.php';
             <?php endif; ?>
         </div>
     </section>
+
+    <?php
+        $storyAssets = [
+            'charging-network' => ['charging-network.webp', $lang === 'bg' ? 'Мрежа EVSmartRoute' : 'EVSmartRoute Network'],
+            'live-traffic' => ['live-traffic-neon.webp', $lang === 'bg' ? 'TomTom трафик в реално време' : 'TomTom Live Traffic'],
+            'route-planning' => ['garage-multistop.webp', $lang === 'bg' ? 'Интелигентно планиране с много спирки' : 'Multi-stop Intelligence'],
+        ];
+        $storyAsset = $storyAssets[$routeName] ?? null;
+    ?>
+    <?php if ($storyAsset): ?>
+        <section class="section section--visual-story">
+            <div class="container"><figure class="story-visual glass-panel reveal"><img src="<?= e(asset_url('/assets/images/' . $storyAsset[0])) ?>" width="1280" height="720" alt="<?= e($page['image_alt'] ?? ($page['title'] ?? 'EVSmartRoute')) ?>" loading="lazy" decoding="async"><figcaption><span class="live-badge"><span></span><?= e($storyAsset[1]) ?></span><strong><?= e($page['visual_caption'] ?? ($page['intro'] ?? '')) ?></strong></figcaption></figure></div>
+        </section>
+    <?php endif; ?>
 
     <?php if (!empty($page['sections'])): ?>
         <section class="section content-page-section">
@@ -47,4 +67,3 @@ require TEMPLATE_PATH . '/header.php';
     </section>
 </main>
 <?php require TEMPLATE_PATH . '/footer.php'; ?>
-

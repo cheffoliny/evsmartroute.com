@@ -31,10 +31,13 @@ require TEMPLATE_PATH . '/header.php';
         <div class="inner-hero__glow" aria-hidden="true"></div>
         <div class="container data-hero-layout">
             <div class="inner-hero__content reveal"><p class="eyebrow"><?= e($page['eyebrow']) ?></p><h1><?= e($page['title']) ?></h1><p><?= e($page['intro']) ?></p><div class="data-freshness"><span></span><?= e($page['freshness']) ?></div></div>
-            <div class="data-flow glass-panel reveal" aria-label="<?= e($page['flow_aria']) ?>">
+            <div class="data-visual-stack reveal">
+                <img class="data-hero-image" src="<?= e(asset_url('/assets/images/real-time-charging.webp')) ?>" width="1280" height="720" alt="<?= e($page['image_alt']) ?>" fetchpriority="high" decoding="async">
+            <div class="data-flow glass-panel" aria-label="<?= e($page['flow_aria']) ?>">
                 <div class="flow-node"><span>01</span><strong><?= e($page['flow_operators']) ?></strong><small>OCPI · OCPP · API</small></div><i>→</i>
                 <div class="flow-node flow-node--cloud"><span>02</span><strong>EVSmartRoute Cloud</strong><small><?= e($page['flow_normalize']) ?></small></div><i>→</i>
                 <div class="flow-node"><span>03</span><strong><?= e($page['flow_app']) ?></strong><small>Web · PWA</small></div>
+            </div>
             </div>
         </div>
     </section>
@@ -53,4 +56,3 @@ require TEMPLATE_PATH . '/header.php';
 </main>
 <script type="application/ld+json"><?= json_encode($jsonLd, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) ?></script>
 <?php require TEMPLATE_PATH . '/footer.php'; ?>
-

@@ -25,13 +25,13 @@ $evModels = [
 require TEMPLATE_PATH . '/header.php';
 ?>
 <main id="main-content">
-    <section class="hero section" aria-labelledby="hero-title">
-        <div class="hero__glow hero__glow--green" data-parallax="-0.08" aria-hidden="true"></div>
-        <div class="hero__glow hero__glow--blue" data-parallax="0.06" aria-hidden="true"></div>
+    <section class="hero hero--fullbleed" aria-labelledby="hero-title">
+        <img class="hero__backdrop" src="<?= e(asset_url('/assets/images/hero-fullbleed.webp')) ?>" width="1920" height="1080" alt="" fetchpriority="high" decoding="async">
+        <div class="hero__scrim" aria-hidden="true"></div>
         <div class="container hero__inner">
             <div class="hero__content">
                 <p class="eyebrow"><?= e(t('home.hero.eyebrow')) ?></p>
-                <h1 id="hero-title"><?= e(t('home.hero.title')) ?></h1>
+                <h1 id="hero-title" class="hero__title"><?php if ($lang === 'bg'): ?>Пътувай по-далеч.<br>Зареждай <span>по-умно.</span><?php else: ?>Drive farther.<br>Charge <span>smarter.</span><?php endif; ?></h1>
                 <p class="hero__lead"><?= e(t('home.hero.description')) ?></p>
                 <div class="button-group">
                     <a class="button button--primary" href="<?= e(app_url('/')) ?>"><?= e(t('actions.plan_route')) ?></a>
@@ -40,11 +40,26 @@ require TEMPLATE_PATH . '/header.php';
                 <p class="trust-line"><span aria-hidden="true">✓</span> <?= e(t('home.hero.trust')) ?></p>
             </div>
 
-            <div class="range-simulator glass-panel" data-simulator data-parallax="-0.025">
+            <div class="hero-hud" aria-label="Sofia to the Black Sea EV route" data-parallax="-0.018">
+                <svg class="hero-route-motion" viewBox="0 0 1000 620" preserveAspectRatio="none" data-route-motion aria-hidden="true">
+                    <path class="hero-route-motion__base" d="M90 485 C260 420 320 270 510 310 S720 400 900 150"/>
+                    <path class="hero-route-motion__pulse" d="M90 485 C260 420 320 270 510 310 S720 400 900 150"/>
+                </svg>
+                <div class="hud-waypoint hud-waypoint--start"><i></i><strong>📍 <?= $lang === 'bg' ? 'София' : 'Sofia' ?></strong><span>100% SoC</span></div>
+                <div class="hud-waypoint hud-waypoint--charge"><i></i><strong>⚡ HPC Charging</strong><span>350 kW</span></div>
+                <div class="hud-waypoint hud-waypoint--finish"><i></i><strong>🏁 <?= $lang === 'bg' ? 'Варна / Бургас' : 'Varna / Burgas' ?></strong><span>25% SoC</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="simulator-stage section" aria-labelledby="range-lab-title">
+        <div class="container simulator-lab">
+            <div class="simulator-stage__inner reveal">
+            <div class="range-simulator glass-panel" data-simulator>
                 <div class="simulator-header">
                     <div>
                         <p class="eyebrow"><?= e(t('home.simulator.eyebrow')) ?></p>
-                        <h2><?= e(t('home.simulator.title')) ?></h2>
+                        <h2 id="range-lab-title"><?= e(t('home.simulator.title')) ?></h2>
                     </div>
                     <span class="live-badge"><span></span><?= e(t('home.simulator.live')) ?></span>
                 </div>
@@ -91,6 +106,11 @@ require TEMPLATE_PATH . '/header.php';
                     <p data-insight><?= e(t('home.simulator.insight_mild')) ?></p>
                 </div>
             </div>
+            </div>
+            <figure class="simulator-lab__visual reveal" data-parallax="0.025">
+                <img src="<?= e(asset_url('/assets/images/battery-chassis.webp')) ?>" width="1280" height="720" alt="<?= e($lang === 'bg' ? 'EV шаси с визуализирани батерия и термичен поток' : 'EV chassis with visualized battery and thermal flow') ?>" loading="lazy" decoding="async">
+                <figcaption><span></span><?= e($lang === 'bg' ? 'Battery & Thermal Intelligence' : 'Battery & Thermal Intelligence') ?></figcaption>
+            </figure>
         </div>
     </section>
 
@@ -117,7 +137,7 @@ require TEMPLATE_PATH . '/header.php';
                 <div class="vehicle-search__icon" aria-hidden="true">⌕</div>
                 <label class="sr-only" for="vehicleSearch"><?= e(t('home.compatibility.placeholder')) ?></label>
                 <input id="vehicleSearch" type="search" placeholder="<?= e(t('home.compatibility.placeholder')) ?>" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="vehicleResults" data-vehicle-query>
-                <span class="vehicle-search__hint">EV Catalog</span>
+                <span class="vehicle-search__hint"><?= e($lang === 'bg' ? 'EV каталог' : 'EV Catalog') ?></span>
                 <div class="autocomplete-list" id="vehicleResults" role="listbox" hidden data-vehicle-results></div>
             </div>
             <div class="vehicle-support-message glass-panel" aria-live="polite" hidden data-vehicle-message></div>
@@ -146,25 +166,10 @@ require TEMPLATE_PATH . '/header.php';
                 <a class="text-link" href="<?= e(localized_url('battery-intelligence')) ?>"><?= e(t('home.battery.learn_more')) ?> <span>→</span></a>
             </div>
 
-            <div class="battery-dashboard glass-panel reveal" data-battery-visual>
-                <div class="battery-dashboard__top">
-                    <span><?= e(t('home.battery.trip_forecast')) ?></span>
-                    <span class="live-badge"><span></span><?= e(t('home.battery.calculated')) ?></span>
-                </div>
-                <div class="battery-visual" aria-label="<?= e(t('home.battery.visual_aria')) ?>">
-                    <div class="battery-shell">
-                        <div class="battery-fill" data-battery-fill></div>
-                        <span data-soc-output>78%</span>
-                    </div>
-                </div>
-                <div class="soc-route" aria-hidden="true">
-                    <div class="soc-route__line"><span></span></div>
-                    <div><strong>78%</strong><span><?= e(t('home.battery.departure')) ?></span></div>
-                    <div><strong>46%</strong><span><?= e(t('home.battery.charging')) ?></span></div>
-                    <div><strong>18%</strong><span><?= e(t('home.battery.arrival')) ?></span></div>
-                </div>
-                <div class="battery-alert"><span aria-hidden="true">✓</span><p><?= e(t('home.battery.safe_buffer')) ?></p></div>
-            </div>
+            <figure class="battery-photo glass-panel reveal" data-parallax="-0.018">
+                <img src="<?= e(asset_url('/assets/images/ev-charging-parallax.webp')) ?>" width="1280" height="720" alt="<?= e(t('home.battery.image_alt')) ?>" loading="lazy" decoding="async">
+                <span class="battery-photo__glow" aria-hidden="true"></span>
+            </figure>
         </div>
     </section>
 

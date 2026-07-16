@@ -54,14 +54,13 @@
             const penalty = climatePenalty(degrees);
             const realWorldBaseline = wltpRange * 0.91;
             const estimatedRange = Math.round(realWorldBaseline * (1 - penalty));
-            const sliderProgress = ((degrees - Number(temperature.min)) / (Number(temperature.max) - Number(temperature.min))) * 100;
-
             animateNumber(rangeOutput, estimatedRange);
             temperatureOutput.textContent = degrees;
             batteryOutput.textContent = `${battery} kWh`;
             lossOutput.textContent = `−${Math.round(penalty * 100)}%`;
             meter.style.width = `${Math.max(20, Math.min(100, (estimatedRange / 650) * 100))}%`;
-            temperature.style.background = `linear-gradient(90deg, var(--electric-blue-light) ${sliderProgress}%, rgba(255,255,255,.09) ${sliderProgress}%)`;
+            const temperatureColor = degrees <= 0 ? '#0284c7' : degrees <= 12 ? '#38bdf8' : degrees <= 24 ? '#facc15' : degrees <= 30 ? '#fb923c' : '#ef4444';
+            temperature.style.setProperty('--temperature-color', temperatureColor);
             insight.textContent = degrees < 8 ? translations.insightCold : (degrees > 28 ? translations.insightHot : translations.insightMild);
         };
 
@@ -174,4 +173,3 @@
         return node.innerHTML;
     }
 })();
-

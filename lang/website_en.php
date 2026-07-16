@@ -6,7 +6,7 @@ return [
     ],
     'nav' => ['home' => 'Home', 'features' => 'Features', 'network' => 'Charging network', 'pricing' => 'Pricing', 'blog' => 'Blog', 'data' => 'Live data'],
     'actions' => ['plan_route' => 'Plan a route', 'see_how' => 'See how it works', 'login' => 'Log in', 'start_free' => 'Start for free', 'start_trial' => 'Start Premium Trial', 'back_home' => 'Back home'],
-    'accessibility' => ['skip' => 'Skip to main content', 'menu' => 'Open menu', 'primary_nav' => 'Primary navigation', 'language' => 'Choose language'],
+    'accessibility' => ['skip' => 'Skip to main content', 'menu' => 'Open menu', 'primary_nav' => 'Primary navigation', 'language' => 'Choose language', 'light_theme' => 'Switch to light theme', 'dark_theme' => 'Switch to dark theme'],
     'home' => [
         'hero' => [
             'eyebrow' => 'EV journeys without the unknown', 'title' => 'Drive farther. Charge smarter.',
@@ -37,7 +37,7 @@ return [
             'description' => 'The algorithm forecasts energy throughout the journey and preserves a safe reserve for unexpected conditions.',
             'factor_temperature' => 'Temperature, climate control and seasonal tyres', 'factor_load' => 'Passengers, luggage and terrain profile',
             'factor_buffer' => 'Critical reserve and adaptive buffer below 10%', 'learn_more' => 'Explore Battery Intelligence',
-            'trip_forecast' => 'Trip forecast', 'calculated' => 'Calculated', 'visual_aria' => 'Forecast battery level',
+            'trip_forecast' => 'Trip forecast', 'calculated' => 'Calculated', 'visual_aria' => 'Forecast battery level', 'image_alt' => 'EV battery with an energy-flow visualisation',
             'departure' => 'Departure', 'charging' => 'Before charging', 'arrival' => 'Arrival',
             'safe_buffer' => 'The route maintains a safe reserve above the critical buffer.',
         ],
