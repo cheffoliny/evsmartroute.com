@@ -57,6 +57,14 @@
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
     .stat-item:nth-child(3)::before { display: none; }
     .battery-layout { grid-template-columns: 1fr; }
+    .about-story__grid { grid-template-columns:1fr; }
+    .about-metrics { display:grid; grid-template-columns:repeat(3,1fr); }
+    .about-metrics > div { align-items:flex-start; flex-direction:column; border-right:1px solid var(--glass-border); border-bottom:0; }
+    .about-metrics > div:last-child { border-right:0; }
+    .about-metrics span { text-align:left; }
+    .about-values__grid { grid-template-columns:repeat(2,1fr); }
+    .about-freedom__panel { grid-template-columns:1fr; }
+    .about-freedom__symbol { width:min(100%,480px); margin-inline:auto; }
     .network-experience { grid-template-columns: 1fr; }
     .network-intro { max-width:680px; }
     .network-map { min-height:430px; }
@@ -120,6 +128,24 @@
     .battery-shell { width: 180px; height: 84px; }
     .battery-shell::after { top: 23px; }
     .operator-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-hero { min-height:680px; }
+    .about-hero__image { object-position:62% center; }
+    .about-hero__scrim { background:linear-gradient(90deg,rgba(7,12,21,.95),rgba(7,12,21,.72) 78%,rgba(7,12,21,.25)); }
+    .about-mission__grid,.about-values__grid,.about-help__grid { grid-template-columns:1fr; }
+    .about-mission__card { min-height:auto; padding:30px 24px; }
+    .about-mission__card > span { margin-bottom:34px; }
+    .about-freedom__panel { min-height:auto; padding:36px 24px; border-radius:26px; }
+    .about-freedom__copy ul { grid-template-columns:1fr; }
+    .about-freedom__symbol { width:100%; }
+    .about-intelligence__visual,.about-intelligence__visual img { min-height:420px; height:420px; }
+    .about-intelligence__visual figcaption { right:22px; bottom:22px; left:22px; align-items:flex-start; flex-direction:column; }
+    .about-help__card { min-height:auto; border-right:0; border-bottom:1px solid var(--glass-border); }
+    .about-help__card:last-child { border-bottom:0; }
+    .about-help__card h3 { margin-top:28px; }
+    .about-metrics { grid-template-columns:1fr; }
+    .about-metrics > div { min-height:100px; align-items:center; flex-direction:row; border-right:0; border-bottom:1px solid var(--glass-border); }
+    .about-metrics > div:last-child { border-bottom:0; }
+    .about-metrics span { text-align:right; }
     .network-map { min-height:360px; }
     .network-map__top { align-items:flex-start; flex-direction:column; gap:6px; }
     .network-map__legend { left:18px; right:auto; }

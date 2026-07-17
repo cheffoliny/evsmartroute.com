@@ -148,13 +148,23 @@ require TEMPLATE_PATH . '/header.php';
             <div class="vehicle-support-message glass-panel" aria-live="polite" hidden data-vehicle-message></div>
             <article class="ev-spec-card glass-panel" aria-live="polite" hidden data-vehicle-spec></article>
 
-            <?php $evBrands = ['tesla', 'bmw', 'audi', 'hyundai', 'kia', 'volkswagen', 'renault', 'byd', 'skoda']; ?>
+            <?php $evBrands = [
+                ['name' => 'Tesla', 'file' => 'evgroup-tesla.webp', 'class' => 'brand-logo--color'],
+                ['name' => 'BMW', 'file' => 'evgroup-bmw.webp', 'class' => 'brand-logo--color'],
+                ['name' => 'Audi', 'file' => 'evgroup-audi.webp', 'class' => 'brand-logo--dark'],
+                ['name' => 'Hyundai', 'file' => 'hyundai.svg', 'class' => 'brand-logo--mono'],
+                ['name' => 'Kia', 'file' => 'kia.svg', 'class' => 'brand-logo--mono'],
+                ['name' => 'Volkswagen', 'file' => 'volkswagen.svg', 'class' => 'brand-logo--mono'],
+                ['name' => 'Renault', 'file' => 'renault.svg', 'class' => 'brand-logo--mono'],
+                ['name' => 'BYD', 'file' => 'evgroup-byd.webp', 'class' => 'brand-logo--color'],
+                ['name' => 'Škoda', 'file' => 'skoda.svg', 'class' => 'brand-logo--mono'],
+            ]; ?>
             <div class="brand-marquee reveal" aria-label="<?= e(t('home.compatibility.brands')) ?>">
                 <div class="brand-marquee__track">
                     <?php for ($copy = 0; $copy < 2; $copy++): ?>
                         <div class="brand-marquee__set" <?= $copy ? 'aria-hidden="true"' : '' ?>>
                             <?php foreach ($evBrands as $brand): ?>
-                                <img src="<?= e(asset_url('/assets/images/brands/' . $brand . '.svg')) ?>" width="140" height="40" alt="<?= $copy ? '' : e(ucfirst($brand)) ?>" loading="lazy" decoding="async">
+                                <img class="<?= e($brand['class']) ?>" src="<?= e(asset_url('/assets/images/brands/' . $brand['file'])) ?>" width="260" height="72" alt="<?= $copy ? '' : e($brand['name']) ?>" decoding="async">
                             <?php endforeach; ?>
                         </div>
                     <?php endfor; ?>

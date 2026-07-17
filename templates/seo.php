@@ -11,6 +11,10 @@ $logoUrl = SITE_URL . '/assets/images/evsmartroute-logo.webp';
 <link rel="alternate" hreflang="bg" href="<?= e(SITE_URL . localized_url($canonicalPath ?? '', 'bg')) ?>">
 <link rel="alternate" hreflang="en" href="<?= e(SITE_URL . localized_url($canonicalPath ?? '', 'en')) ?>">
 <link rel="alternate" hreflang="x-default" href="<?= e(SITE_URL . localized_url($canonicalPath ?? '', DEFAULT_LANGUAGE)) ?>">
+<link rel="icon" href="<?= e(asset_url('/favicon.ico')) ?>" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="<?= e(asset_url('/assets/images/favicon-32x32.png')) ?>">
+<link rel="icon" type="image/png" sizes="16x16" href="<?= e(asset_url('/assets/images/favicon-16x16.png')) ?>">
+<link rel="apple-touch-icon" sizes="180x180" href="<?= e(asset_url('/assets/images/apple-touch-icon.png')) ?>">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="EVSmartRoute">
 <meta property="og:locale" content="<?= $lang === 'bg' ? 'bg_BG' : 'en_US' ?>">
