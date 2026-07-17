@@ -21,7 +21,7 @@
         });
         price.classList.add('is-changing');
         window.setTimeout(() => {
-            price.textContent = yearly ? '39.99' : '4.99';
+            price.textContent = yearly ? translations.yearlyPrice : translations.monthlyPrice;
             period.textContent = yearly ? translations.perYear : translations.perMonth;
             description.textContent = yearly ? translations.yearlyDescription : translations.monthlyDescription;
             cta.href = yearly ? cta.dataset.yearlyUrl : cta.dataset.monthlyUrl;
@@ -31,4 +31,3 @@
 
     buttons.forEach((button) => button.addEventListener('click', () => setBilling(button.dataset.billing)));
 })();
-

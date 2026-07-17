@@ -8,10 +8,12 @@ define('LANG_PATH', PROJECT_ROOT . '/lang');
 
 const SITE_URL = 'https://evsmartroute.com';
 const APP_URL = 'https://app.evsmartroute.com';
+const PLAN_CATALOG_ENDPOINT = APP_URL . '/api/v1/plans/catalog.php';
 const SUPPORTED_LANGUAGES = ['bg', 'en'];
 const DEFAULT_LANGUAGE = 'bg';
 
 require TEMPLATE_PATH . '/functions.php';
+require TEMPLATE_PATH . '/plan-catalog.php';
 
 $requestPath = request_path();
 $route = resolve_route($requestPath);

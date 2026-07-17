@@ -44,7 +44,7 @@ require TEMPLATE_PATH . '/header.php';
                     <article class="content-card glass-panel reveal">
                         <?php if (!empty($section['icon'])): ?><span class="content-card__icon" aria-hidden="true"><?= e($section['icon']) ?></span><?php endif; ?>
                         <h2><?= e($section['title']) ?></h2>
-                        <p><?= e($section['text']) ?></p>
+                        <p><?= e(plan_copy($section['text'])) ?></p>
                         <?php if (!empty($section['items'])): ?>
                             <ul class="check-list">
                                 <?php foreach ($section['items'] as $item): ?><li><?= e($item) ?></li><?php endforeach; ?>

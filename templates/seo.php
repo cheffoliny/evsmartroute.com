@@ -39,7 +39,7 @@ $software = [
     'description' => t('seo.home.description'),
     'offers' => [
         ['@type' => 'Offer', 'name' => 'FREE', 'price' => '0', 'priceCurrency' => 'EUR'],
-        ['@type' => 'Offer', 'name' => 'PREMIUM Monthly', 'price' => '4.99', 'priceCurrency' => 'EUR'],
+        ['@type' => 'Offer', 'name' => 'PREMIUM Monthly', 'price' => number_format((float) plan_price('monthly')['amount'], 2, '.', ''), 'priceCurrency' => (string) plan_price('monthly')['currency']],
     ],
 ];
 if (($pageKey ?? '') === 'home') {
@@ -56,7 +56,7 @@ if (($pageKey ?? '') === 'home') {
     ], $translations['pages']['pricing']['faq_items'])];
 } elseif (($pageKey ?? '') === 'faq' && !empty($translations['pages']['faq']['sections'])) {
     $schemas[] = ['@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => array_map(static fn(array $item): array => [
-        '@type' => 'Question', 'name' => $item['title'], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $item['text']],
+        '@type' => 'Question', 'name' => $item['title'], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => plan_copy($item['text'])],
     ], $translations['pages']['faq']['sections'])];
 }
 foreach ($schemas as $schema): ?>

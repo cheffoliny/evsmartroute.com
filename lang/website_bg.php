@@ -64,7 +64,7 @@ return [
         'pricing' => [
             'eyebrow' => 'Ясни планове', 'title' => 'Започнете безплатно. Пътувайте без ограничения.',
             'description' => 'Без скрити такси и без карта за пробния период.', 'free_name' => 'FREE', 'forever' => 'завинаги',
-            'free_routes' => 'До 2 планирания на ден', 'free_distance' => 'Маршрути до 300 km', 'free_vehicle' => '1 автомобил в гаража',
+            'free_routes' => 'До {{free.daily_routes}} планирания на ден', 'free_distance' => 'Маршрути до {{free.max_route_km}} km', 'free_vehicle' => '{{free.garage_cars}} автомобил в гаража',
             'no_multistop' => 'Без multi-stop маршрути', 'no_traffic' => 'Без Live Traffic', 'popular' => 'Най-популярен',
             'month' => 'месец', 'trial' => '1 месец безплатно', 'unlimited_routes' => 'Неограничени планирания',
             'long_routes' => 'Дълги международни маршрути', 'multistop' => 'Multi-stop планиране',

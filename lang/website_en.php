@@ -48,7 +48,7 @@ return [
         'pricing' => [
             'eyebrow' => 'Straightforward plans', 'title' => 'Start free. Travel without limits.',
             'description' => 'No hidden fees and no card required for the trial.', 'free_name' => 'FREE', 'forever' => 'forever',
-            'free_routes' => 'Up to 2 plans per day', 'free_distance' => 'Routes up to 300 km', 'free_vehicle' => '1 vehicle in your garage',
+            'free_routes' => 'Up to {{free.daily_routes}} plans per day', 'free_distance' => 'Routes up to {{free.max_route_km}} km', 'free_vehicle' => '{{free.garage_cars}} vehicle in your garage',
             'no_multistop' => 'No multi-stop routes', 'no_traffic' => 'No Live Traffic', 'popular' => 'Most popular',
             'month' => 'month', 'trial' => '1 month free', 'unlimited_routes' => 'Unlimited route plans',
             'long_routes' => 'Long international routes', 'multistop' => 'Multi-stop planning',

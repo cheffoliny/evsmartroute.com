@@ -2,6 +2,13 @@
 declare(strict_types=1);
 $page = $translations['pages']['pricing'];
 $faqItems = $page['faq_items'];
+$monthlyPrice = plan_price('monthly');
+$yearlyPrice = plan_price('yearly');
+$freeFeatures = array_map('plan_copy', $page['free_features']);
+$comparisonRows = array_map(
+    static fn (array $row): array => array_map('plan_copy', $row),
+    $page['comparison']
+);
 require TEMPLATE_PATH . '/header.php';
 ?>
 <main id="main-content">
@@ -23,12 +30,12 @@ require TEMPLATE_PATH . '/header.php';
             <article class="detailed-plan glass-panel reveal">
                 <p class="plan-kicker">FREE</p><h2>€0</h2><p><?= e($page['free_description']) ?></p>
                 <a class="button button--ghost" href="<?= e(app_url('/register?plan=free')) ?>"><?= e(t('actions.start_free')) ?></a>
-                <ul class="plan-features"><?php foreach ($page['free_features'] as $item): ?><li class="is-included"><?= e($item) ?></li><?php endforeach; ?></ul>
+                <ul class="plan-features"><?php foreach ($freeFeatures as $item): ?><li class="is-included"><?= e($item) ?></li><?php endforeach; ?></ul>
             </article>
             <article class="detailed-plan detailed-plan--premium glass-panel reveal" data-premium-card>
                 <span class="popular-badge"><?= e($page['recommended']) ?></span><p class="plan-kicker">PREMIUM</p>
-                <div class="dynamic-price"><span>€</span><strong data-price>4.99</strong><small data-period><?= e($page['per_month']) ?></small></div>
-                <p data-price-description><?= e($page['monthly_description']) ?></p>
+                <div class="dynamic-price"><span>€</span><strong data-price><?= e(number_format((float) $monthlyPrice['amount'], 2)) ?></strong><small data-period><?= e($page['per_month']) ?></small></div>
+                <p data-price-description><?= e(plan_copy($page['monthly_description'])) ?></p>
                 <a class="button button--primary" data-premium-cta data-monthly-url="<?= e(app_url('/register?plan=premium_monthly&trial=true')) ?>" data-yearly-url="<?= e(app_url('/register?plan=premium_yearly&trial=true')) ?>" href="<?= e(app_url('/register?plan=premium_monthly&trial=true')) ?>"><?= e(t('actions.start_trial')) ?></a>
                 <ul class="plan-features"><?php foreach ($page['premium_features'] as $item): ?><li class="is-included"><?= e($item) ?></li><?php endforeach; ?></ul>
             </article>
@@ -39,7 +46,7 @@ require TEMPLATE_PATH . '/header.php';
         <div class="container">
             <div class="section-heading reveal"><p class="eyebrow"><?= e($page['comparison_eyebrow']) ?></p><h2 id="comparison-title"><?= e($page['comparison_title']) ?></h2></div>
             <div class="comparison-table-wrap glass-panel reveal"><table class="comparison-table"><thead><tr><th><?= e($page['feature']) ?></th><th>FREE</th><th>PREMIUM</th></tr></thead><tbody>
-                <?php foreach ($page['comparison'] as $row): ?><tr><th><?= e($row[0]) ?></th><td><?= e($row[1]) ?></td><td class="premium-value"><?= e($row[2]) ?></td></tr><?php endforeach; ?>
+                <?php foreach ($comparisonRows as $row): ?><tr><th><?= e($row[0]) ?></th><td><?= e($row[1]) ?></td><td class="premium-value"><?= e($row[2]) ?></td></tr><?php endforeach; ?>
             </tbody></table></div>
         </div>
     </section>
@@ -48,6 +55,5 @@ require TEMPLATE_PATH . '/header.php';
         <?php foreach ($faqItems as $index => $item): ?><details class="glass-panel reveal"<?= $index === 0 ? ' open' : '' ?>><summary><?= e($item['question']) ?><span aria-hidden="true">+</span></summary><p><?= e($item['answer']) ?></p></details><?php endforeach; ?>
     </div></div></section>
 </main>
-<script type="application/json" id="pricingTranslations"><?= json_encode(['perMonth' => $page['per_month'], 'perYear' => $page['per_year'], 'monthlyDescription' => $page['monthly_description'], 'yearlyDescription' => $page['yearly_description']], JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) ?></script>
+<script type="application/json" id="pricingTranslations"><?= json_encode(['perMonth' => $page['per_month'], 'perYear' => $page['per_year'], 'monthlyDescription' => plan_copy($page['monthly_description']), 'yearlyDescription' => plan_copy($page['yearly_description']), 'monthlyPrice' => number_format((float) $monthlyPrice['amount'], 2, '.', ''), 'yearlyPrice' => number_format((float) $yearlyPrice['amount'], 2, '.', '')], JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) ?></script>
 <?php require TEMPLATE_PATH . '/footer.php'; ?>
-

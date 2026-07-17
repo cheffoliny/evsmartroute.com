@@ -254,9 +254,9 @@ require TEMPLATE_PATH . '/header.php';
                 <article class="plan-card glass-panel reveal">
                     <div class="plan-card__header"><div><span><?= e(t('home.pricing.free_name')) ?></span><strong>€0</strong></div><small><?= e(t('home.pricing.forever')) ?></small></div>
                     <ul class="plan-features">
-                        <li class="is-included"><?= e(t('home.pricing.free_routes')) ?></li>
-                        <li class="is-included"><?= e(t('home.pricing.free_distance')) ?></li>
-                        <li class="is-included"><?= e(t('home.pricing.free_vehicle')) ?></li>
+                        <li class="is-included"><?= e(plan_copy(t('home.pricing.free_routes'))) ?></li>
+                        <li class="is-included"><?= e(plan_copy(t('home.pricing.free_distance'))) ?></li>
+                        <li class="is-included"><?= e(plan_copy(t('home.pricing.free_vehicle'))) ?></li>
                         <li class="is-muted"><?= e(t('home.pricing.no_multistop')) ?></li>
                         <li class="is-muted"><?= e(t('home.pricing.no_traffic')) ?></li>
                     </ul>
@@ -265,7 +265,8 @@ require TEMPLATE_PATH . '/header.php';
 
                 <article class="plan-card plan-card--premium glass-panel reveal">
                     <span class="popular-badge"><?= e(t('home.pricing.popular')) ?></span>
-                    <div class="plan-card__header"><div><span>PREMIUM</span><strong>€4.99 <small>/ <?= e(t('home.pricing.month')) ?></small></strong></div><small><?= e(t('home.pricing.trial')) ?></small></div>
+                    <?php $homeMonthlyPrice = plan_price('monthly'); ?>
+                    <div class="plan-card__header"><div><span>PREMIUM</span><strong>€<?= e(number_format((float) $homeMonthlyPrice['amount'], 2)) ?> <small>/ <?= e(t('home.pricing.month')) ?></small></strong></div><small><?= e(t('home.pricing.trial')) ?></small></div>
                     <ul class="plan-features">
                         <li class="is-included"><?= e(t('home.pricing.unlimited_routes')) ?></li>
                         <li class="is-included"><?= e(t('home.pricing.long_routes')) ?></li>
