@@ -27,6 +27,7 @@
             <a href="<?= e(localized_url('privacy')) ?>"><?= e(t('footer.privacy')) ?></a>
             <a href="<?= e(localized_url('terms')) ?>"><?= e(t('footer.terms')) ?></a>
             <a href="<?= e(localized_url('cookies')) ?>"><?= e(t('footer.cookies')) ?></a>
+            <button class="footer-cookie-settings" type="button" data-cookie-settings><?= e(t('cookie_consent.reopen')) ?></button>
             <a href="<?= e(localized_url('eu-data-act')) ?>"><?= e(t('footer.eu_data')) ?></a>
         </div>
     </div>
@@ -35,5 +36,6 @@
         <div class="footer-status"><span aria-hidden="true"></span><?= e(t('footer.status')) ?></div>
     </div>
 </footer>
+<?php require TEMPLATE_PATH . '/cookie-consent.php'; ?>
 </body>
 </html>

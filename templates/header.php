@@ -8,7 +8,9 @@
     <script>
         (() => {
             try {
-                const saved = localStorage.getItem('theme');
+                const consentCookie = document.cookie.split('; ').find((part) => part.startsWith('esr_cookie_consent='));
+                const consent = consentCookie ? JSON.parse(decodeURIComponent(consentCookie.split('=').slice(1).join('='))) : null;
+                const saved = consent?.preferences ? localStorage.getItem('theme') : null;
                 const theme = saved === 'light' || saved === 'dark' ? saved : (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
                 document.documentElement.dataset.theme = theme;
                 document.querySelector('meta[name="theme-color"]').content = theme === 'light' ? '#f8fafc' : '#0b0f19';
@@ -25,6 +27,8 @@
     <link rel="stylesheet" href="<?= e(asset_url('/assets/css/responsive.css')) ?>">
     <script src="<?= e(asset_url('/assets/js/website.js')) ?>" defer></script>
     <script src="<?= e(asset_url('/assets/js/theme-toggle.js')) ?>" defer></script>
+    <script src="<?= e(asset_url('/assets/js/cookie-consent.js')) ?>" defer></script>
+    <script src="<?= e(asset_url('/assets/js/analytics.js')) ?>" defer></script>
     <?php if (($pageKey ?? '') === 'home'): ?>
         <script src="<?= e(asset_url('/assets/js/simulator.js')) ?>" defer></script>
     <?php endif; ?>

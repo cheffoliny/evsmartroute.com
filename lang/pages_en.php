@@ -168,7 +168,7 @@ return ['pages' => [
         'sections' => [
             ['title' => 'Essential', 'text' => 'Maintain sessions, security and language preferences.', 'items' => ['Always active', 'Not used for advertising']],
             ['title' => 'Analytics', 'text' => 'Help us understand aggregate page use.', 'items' => ['Consent required', 'Consent can be withdrawn']],
-            ['title' => 'Management', 'text' => 'Preferences will be editable through the consent panel.', 'items' => ['Clear choice', 'No preselected optional categories']],
+            ['title' => 'Management', 'text' => 'Preferences can be changed at any time through the consent panel.', 'items' => ['Clear choice', 'No preselected optional categories']],
         ],
     ],
     'eu-data-act' => [
