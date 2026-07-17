@@ -1,5 +1,8 @@
 <?php
 return ['pages' => [
+    'home_metrics' => [
+        'soc_accuracy' => 'точност при прогнозиране на SoC',
+    ],
     'pricing' => [
         'seo_title' => 'Абонаменти — FREE и PREMIUM | EVSmartRoute', 'seo_description' => 'Сравнете FREE и PREMIUM плановете на EVSmartRoute. Започнете с едномесечен Premium Trial без карта.',
         'eyebrow' => 'Прозрачни цени', 'title' => 'Изберете свободата да пътувате по-далеч.', 'intro' => 'Започнете безплатно и преминете към Premium, когато маршрутите ви станат по-амбициозни.',

@@ -15,8 +15,10 @@
     function animateNumber(element, target, duration = 500) {
         if (!element) return;
         const start = Number(element.textContent.replace(/[^0-9.-]/g, '')) || 0;
+        const suffix = element.dataset.countSuffix || '';
+        const renderValue = (value) => `${Math.round(value).toLocaleString()}${suffix}`;
         if (reducedMotion || duration === 0) {
-            element.textContent = Math.round(target).toLocaleString();
+            element.textContent = renderValue(target);
             return;
         }
 
@@ -24,7 +26,7 @@
         const frame = (now) => {
             const progress = Math.min((now - startTime) / duration, 1);
             const eased = 1 - Math.pow(1 - progress, 3);
-            element.textContent = Math.round(start + ((target - start) * eased)).toLocaleString();
+            element.textContent = renderValue(start + ((target - start) * eased));
             if (progress < 1) requestAnimationFrame(frame);
         };
         requestAnimationFrame(frame);
@@ -90,8 +92,12 @@
     const query = searchRoot.querySelector('[data-vehicle-query]');
     const results = searchRoot.querySelector('[data-vehicle-results]');
     const message = document.querySelector('[data-vehicle-message]');
+    const specCard = document.querySelector('[data-vehicle-spec]');
+    const catalogEndpoint = searchRoot.dataset.catalogEndpoint || '';
     let activeIndex = -1;
     let currentMatches = [];
+    let searchTimer = 0;
+    let searchController = null;
 
     const hideResults = () => {
         results.hidden = true;
@@ -103,14 +109,45 @@
 
     const selectModel = (model) => {
         query.value = `${model.brand} ${model.model}`;
-        message.innerHTML = `<span aria-hidden="true">✓</span> <strong>${escapeHtml(model.brand)} ${escapeHtml(model.model)}</strong> ${escapeHtml(translations.supported)} · ${escapeHtml(model.curve)}`;
+        message.innerHTML = `<span aria-hidden="true">✓</span> <strong>${escapeHtml(model.brand)} ${escapeHtml(model.model)}</strong> ${escapeHtml(translations.supported)}`;
         message.hidden = false;
+        if (specCard) {
+            const chargeTime = String(translations.specChargeTime || '').replace('%s', escapeHtml(String(model.chargeTime || '—')));
+            specCard.innerHTML = `
+                <div class="ev-spec-card__head">
+                    <h3>${escapeHtml(model.brand)} ${escapeHtml(model.model)}</h3>
+                    <span class="ev-spec-card__badge"><span aria-hidden="true">✓</span>${escapeHtml(translations.specCompatible)}</span>
+                </div>
+                <div class="ev-spec-grid">
+                    <div class="ev-spec-item"><span>🔋 ${escapeHtml(translations.specCapacity)}</span><strong>${escapeHtml(String(model.battery))} kWh</strong><small>WLTP ${escapeHtml(String(model.range))} km</small></div>
+                    <div class="ev-spec-item"><span>⚡ ${escapeHtml(translations.specPeak)}</span><strong>${escapeHtml(String(model.peak || model.curve))}${model.peak ? ' kW' : ''}</strong><small>${chargeTime}</small></div>
+                    <div class="ev-spec-item"><span>📉 ${escapeHtml(translations.specCurve)}</span><strong>${escapeHtml(model.curve)}</strong><small>${escapeHtml(translations.specCurveValue)}</small></div>
+                </div>`;
+            specCard.hidden = false;
+        }
         hideResults();
     };
 
-    const renderResults = () => {
+    const renderResults = async () => {
         const term = query.value.trim().toLocaleLowerCase();
-        currentMatches = catalog.filter((model) => `${model.brand} ${model.model}`.toLocaleLowerCase().includes(term)).slice(0, 6);
+        const fallbackMatches = catalog.filter((model) => `${model.brand} ${model.model}`.toLocaleLowerCase().includes(term)).slice(0, 12);
+        currentMatches = fallbackMatches;
+        if (catalogEndpoint) {
+            searchController?.abort();
+            searchController = new AbortController();
+            try {
+                const url = new URL(catalogEndpoint, window.location.origin);
+                url.searchParams.set('q', query.value.trim());
+                url.searchParams.set('limit', '12');
+                const response = await fetch(url, { signal: searchController.signal, headers: { Accept: 'application/json' } });
+                if (response.ok) {
+                    const payload = await response.json();
+                    if (Array.isArray(payload.models)) currentMatches = payload.models;
+                }
+            } catch (error) {
+                if (error.name === 'AbortError') return;
+            }
+        }
         activeIndex = -1;
         results.innerHTML = '';
 
@@ -143,7 +180,10 @@
         if (activeIndex >= 0) query.setAttribute('aria-activedescendant', `vehicle-option-${activeIndex}`);
     };
 
-    query.addEventListener('input', renderResults);
+    query.addEventListener('input', () => {
+        window.clearTimeout(searchTimer);
+        searchTimer = window.setTimeout(renderResults, 90);
+    });
     query.addEventListener('focus', renderResults);
     query.addEventListener('keydown', (event) => {
         if (results.hidden || !currentMatches.length) return;

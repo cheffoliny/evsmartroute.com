@@ -1,5 +1,8 @@
 <?php
 return ['pages' => [
+    'home_metrics' => [
+        'soc_accuracy' => 'SoC prediction accuracy',
+    ],
     'pricing' => [
         'seo_title' => 'Pricing — FREE and PREMIUM | EVSmartRoute', 'seo_description' => 'Compare EVSmartRoute FREE and PREMIUM. Start a one-month Premium Trial with no card required.',
         'eyebrow' => 'Transparent pricing', 'title' => 'Choose the freedom to travel farther.', 'intro' => 'Start free and move to Premium when your journeys become more ambitious.',

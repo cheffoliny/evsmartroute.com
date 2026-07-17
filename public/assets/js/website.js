@@ -41,16 +41,56 @@
 
     if (reducedMotion || !('IntersectionObserver' in window)) {
         elements.forEach((element) => element.classList.add('is-visible'));
-        return;
+    } else {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            });
+        }, { threshold: 0.12 });
+
+        elements.forEach((element) => observer.observe(element));
     }
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-        });
-    }, { threshold: 0.12 });
+    const networkExperience = document.querySelector('[data-network-experience]');
+    if (networkExperience) {
+        const filters = [...networkExperience.querySelectorAll('[data-network-filter]')];
+        const cards = [...networkExperience.querySelectorAll('[data-network-card]')];
+        const markers = [...networkExperience.querySelectorAll('[data-map-network]')];
+        const mapLabel = networkExperience.querySelector('[data-network-map-label]');
 
-    elements.forEach((element) => observer.observe(element));
+        const highlightNetwork = (network = '') => {
+            cards.forEach((card) => {
+                const active = network !== '' && card.dataset.networkCard === network;
+                card.classList.toggle('is-active', active);
+                card.setAttribute('aria-pressed', String(active));
+            });
+            markers.forEach((marker) => {
+                marker.classList.toggle('is-muted', network !== '' && marker.dataset.mapNetwork !== network);
+                marker.classList.toggle('is-highlighted', network === '' || marker.dataset.mapNetwork === network);
+            });
+            if (mapLabel) {
+                const card = cards.find((item) => item.dataset.networkCard === network);
+                mapLabel.textContent = card?.getAttribute('aria-label') || filters.find((item) => item.classList.contains('is-active'))?.textContent || '';
+            }
+        };
+
+        filters.forEach((filter) => filter.addEventListener('click', () => {
+            const mode = filter.dataset.networkFilter;
+            filters.forEach((item) => item.classList.toggle('is-active', item === filter));
+            cards.forEach((card) => {
+                const visible = mode === 'all' || card.dataset[mode] === 'true';
+                card.classList.toggle('is-filtered', !visible);
+            });
+            highlightNetwork('');
+        }));
+
+        cards.forEach((card) => card.addEventListener('click', () => {
+            const network = card.classList.contains('is-active') ? '' : card.dataset.networkCard;
+            highlightNetwork(network);
+        }));
+
+        highlightNetwork('');
+    }
 })();

@@ -10,16 +10,16 @@ $pageDescription = t('seo.home.description');
 $canonicalPath = '';
 
 $evModels = [
-    ['id' => 'tesla-model-3-lr', 'brand' => 'Tesla', 'model' => 'Model 3 Long Range', 'range' => 629, 'efficiency' => 14.0, 'battery' => 75, 'curve' => '250 kW'],
-    ['id' => 'vw-id4-pro', 'brand' => 'Volkswagen', 'model' => 'ID.4 Pro', 'range' => 550, 'efficiency' => 16.4, 'battery' => 77, 'curve' => '175 kW'],
-    ['id' => 'hyundai-ioniq5-84', 'brand' => 'Hyundai', 'model' => 'Ioniq 5 84 kWh', 'range' => 570, 'efficiency' => 17.2, 'battery' => 84, 'curve' => '260 kW'],
-    ['id' => 'peugeot-e208', 'brand' => 'Peugeot', 'model' => 'e-208 51 kWh', 'range' => 410, 'efficiency' => 15.1, 'battery' => 51, 'curve' => '100 kW'],
-    ['id' => 'bmw-i4-edrive40', 'brand' => 'BMW', 'model' => 'i4 eDrive40', 'range' => 590, 'efficiency' => 16.1, 'battery' => 81.1, 'curve' => '205 kW'],
-    ['id' => 'audi-q4-45', 'brand' => 'Audi', 'model' => 'Q4 e-tron 45', 'range' => 562, 'efficiency' => 17.6, 'battery' => 77, 'curve' => '175 kW'],
-    ['id' => 'kia-ev6-long-range', 'brand' => 'Kia', 'model' => 'EV6 Long Range', 'range' => 528, 'efficiency' => 16.5, 'battery' => 77.4, 'curve' => '240 kW'],
-    ['id' => 'renault-megane-ev60', 'brand' => 'Renault', 'model' => 'Megane E-Tech EV60', 'range' => 470, 'efficiency' => 16.1, 'battery' => 60, 'curve' => '130 kW'],
-    ['id' => 'byd-seal-design', 'brand' => 'BYD', 'model' => 'Seal Design', 'range' => 570, 'efficiency' => 16.6, 'battery' => 82.5, 'curve' => '150 kW'],
-    ['id' => 'skoda-enyaq-85', 'brand' => 'Škoda', 'model' => 'Enyaq 85', 'range' => 565, 'efficiency' => 16.2, 'battery' => 77, 'curve' => '175 kW'],
+    ['id' => 'tesla-model-3-lr', 'brand' => 'Tesla', 'model' => 'Model 3 Long Range', 'range' => 629, 'efficiency' => 14.0, 'battery' => 75, 'curve' => '250 kW', 'peak' => 250, 'chargeTime' => 27],
+    ['id' => 'vw-id4-pro', 'brand' => 'Volkswagen', 'model' => 'ID.4 Pro', 'range' => 550, 'efficiency' => 16.4, 'battery' => 77, 'curve' => '175 kW', 'peak' => 175, 'chargeTime' => 28],
+    ['id' => 'hyundai-ioniq5-84', 'brand' => 'Hyundai', 'model' => 'Ioniq 5 (84 kWh)', 'range' => 570, 'efficiency' => 17.2, 'battery' => 84, 'curve' => '260 kW', 'peak' => 260, 'chargeTime' => 18],
+    ['id' => 'peugeot-e208', 'brand' => 'Peugeot', 'model' => 'e-208 (51 kWh)', 'range' => 410, 'efficiency' => 15.1, 'battery' => 51, 'curve' => '100 kW', 'peak' => 100, 'chargeTime' => 30],
+    ['id' => 'bmw-i4-edrive40', 'brand' => 'BMW', 'model' => 'i4 eDrive40', 'range' => 590, 'efficiency' => 16.1, 'battery' => 81.1, 'curve' => '205 kW', 'peak' => 205, 'chargeTime' => 31],
+    ['id' => 'audi-q4-45', 'brand' => 'Audi', 'model' => 'Q4 e-tron 45', 'range' => 562, 'efficiency' => 17.6, 'battery' => 77, 'curve' => '175 kW', 'peak' => 175, 'chargeTime' => 28],
+    ['id' => 'kia-ev6-long-range', 'brand' => 'Kia', 'model' => 'EV6 Long Range', 'range' => 528, 'efficiency' => 16.5, 'battery' => 77.4, 'curve' => '240 kW', 'peak' => 240, 'chargeTime' => 18],
+    ['id' => 'renault-megane-ev60', 'brand' => 'Renault', 'model' => 'Megane E-Tech EV60', 'range' => 470, 'efficiency' => 16.1, 'battery' => 60, 'curve' => '130 kW', 'peak' => 130, 'chargeTime' => 32],
+    ['id' => 'byd-seal-design', 'brand' => 'BYD', 'model' => 'Seal Design', 'range' => 570, 'efficiency' => 16.6, 'battery' => 82.5, 'curve' => '150 kW', 'peak' => 150, 'chargeTime' => 37],
+    ['id' => 'skoda-enyaq-85', 'brand' => 'Škoda', 'model' => 'Enyaq 85', 'range' => 565, 'efficiency' => 16.2, 'battery' => 77, 'curve' => '175 kW', 'peak' => 175, 'chargeTime' => 28],
 ];
 
 require TEMPLATE_PATH . '/header.php';
@@ -116,10 +116,15 @@ require TEMPLATE_PATH . '/header.php';
 
     <section class="stats-section" aria-label="<?= e(t('home.stats.aria')) ?>">
         <div class="container stats-grid" data-stats>
-            <?php foreach ([['locations', 2840], ['connectors', 6170], ['operators', 15], ['models', 300]] as [$stat, $value]): ?>
+            <?php foreach ([
+                ['label' => t('home.stats.locations'), 'value' => 2840, 'suffix' => '+'],
+                ['label' => t('home.stats.connectors'), 'value' => 6170, 'suffix' => '+'],
+                ['label' => t('pages.home_metrics.soc_accuracy'), 'value' => 99, 'suffix' => '%'],
+                ['label' => t('home.stats.models'), 'value' => 300, 'suffix' => '+'],
+            ] as $stat): ?>
                 <div class="stat-item reveal">
-                    <strong><span data-count-up="<?= $value ?>">0</span>+</strong>
-                    <span><?= e(t("home.stats.$stat")) ?></span>
+                    <strong><span data-count-up="<?= $stat['value'] ?>" data-count-suffix="<?= e($stat['suffix']) ?>">0<?= e($stat['suffix']) ?></span></strong>
+                    <span><?= e($stat['label']) ?></span>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -133,7 +138,7 @@ require TEMPLATE_PATH . '/header.php';
                 <p><?= e(t('home.compatibility.description')) ?></p>
             </div>
 
-            <div class="vehicle-search glass-panel reveal" data-vehicle-search>
+            <div class="vehicle-search glass-panel reveal" data-vehicle-search data-catalog-endpoint="<?= e(asset_url('/api/ev-catalog.php')) ?>">
                 <div class="vehicle-search__icon" aria-hidden="true">⌕</div>
                 <label class="sr-only" for="vehicleSearch"><?= e(t('home.compatibility.placeholder')) ?></label>
                 <input id="vehicleSearch" type="search" placeholder="<?= e(t('home.compatibility.placeholder')) ?>" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="vehicleResults" data-vehicle-query>
@@ -141,11 +146,19 @@ require TEMPLATE_PATH . '/header.php';
                 <div class="autocomplete-list" id="vehicleResults" role="listbox" hidden data-vehicle-results></div>
             </div>
             <div class="vehicle-support-message glass-panel" aria-live="polite" hidden data-vehicle-message></div>
+            <article class="ev-spec-card glass-panel" aria-live="polite" hidden data-vehicle-spec></article>
 
+            <?php $evBrands = ['tesla', 'bmw', 'audi', 'hyundai', 'kia', 'volkswagen', 'renault', 'byd', 'skoda']; ?>
             <div class="brand-marquee reveal" aria-label="<?= e(t('home.compatibility.brands')) ?>">
-                <?php foreach (['TESLA', 'BMW', 'Audi', 'HYUNDAI', 'KIA', 'Volkswagen', 'RENAULT', 'BYD', 'ŠKODA'] as $brand): ?>
-                    <span><?= e($brand) ?></span>
-                <?php endforeach; ?>
+                <div class="brand-marquee__track">
+                    <?php for ($copy = 0; $copy < 2; $copy++): ?>
+                        <div class="brand-marquee__set" <?= $copy ? 'aria-hidden="true"' : '' ?>>
+                            <?php foreach ($evBrands as $brand): ?>
+                                <img src="<?= e(asset_url('/assets/images/brands/' . $brand . '.svg')) ?>" width="140" height="40" alt="<?= $copy ? '' : e(ucfirst($brand)) ?>" loading="lazy" decoding="async">
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endfor; ?>
+                </div>
             </div>
         </div>
     </section>
@@ -174,15 +187,56 @@ require TEMPLATE_PATH . '/header.php';
     </section>
 
     <section class="section network-section" aria-labelledby="network-title">
-        <div class="container">
-            <div class="section-heading reveal">
-                <p class="eyebrow"><?= e(t('home.network.eyebrow')) ?></p>
-                <h2 id="network-title"><?= e(t('home.network.title')) ?></h2>
-                <p><?= e(t('home.network.description')) ?></p>
+        <?php
+        $cpoNetworks = [
+            ['id' => 'tesla', 'name' => 'Tesla Supercharger', 'logo' => 'tesla-supercharger-logo.webp', 'power' => 250, 'live' => false, 'color' => '#e82127'],
+            ['id' => 'eldrive', 'name' => 'Eldrive', 'logo' => 'eldrive-logo.webp', 'power' => 300, 'live' => false, 'color' => '#67c22f'],
+            ['id' => 'fines', 'name' => 'Fines Charging', 'logo' => 'fines-charging-logo.webp', 'power' => 300, 'live' => false, 'color' => '#ff6b00'],
+            ['id' => 'evpoint', 'name' => 'EVPoint', 'logo' => 'evpoint-logo.webp', 'power' => 240, 'live' => true, 'color' => '#19b7a5'],
+            ['id' => 'electrip', 'name' => 'Electrip', 'logo' => 'electrip-logo.svg', 'power' => 350, 'live' => false, 'color' => '#00a99d'],
+            ['id' => 'vsichkotok', 'name' => 'VsichkoTok', 'logo' => 'vsichkotok-logo.webp', 'power' => 180, 'live' => true, 'color' => '#00a651'],
+        ];
+        ?>
+        <div class="container network-experience" data-network-experience>
+            <div class="network-intro reveal">
+                <div class="section-heading">
+                    <p class="eyebrow"><?= e(t('home.network.eyebrow')) ?></p>
+                    <h2 id="network-title"><?= e(t('home.network.title')) ?></h2>
+                    <p><?= e(t('home.network.description')) ?></p>
+                </div>
+                <div class="network-filters" role="group" aria-label="<?= e($lang === 'bg' ? 'Филтри за зарядни мрежи' : 'Charging network filters') ?>">
+                    <button class="is-active" type="button" data-network-filter="all"><?= e($lang === 'bg' ? 'Всички мрежи' : 'All networks') ?></button>
+                    <button type="button" data-network-filter="hpc"><?= e($lang === 'bg' ? 'Ултрабързи (HPC)' : 'Ultra-fast (HPC)') ?></button>
+                    <button type="button" data-network-filter="live">Live Status (OCPI)</button>
+                </div>
             </div>
+
+            <div class="network-map glass-panel reveal" aria-label="<?= e($lang === 'bg' ? 'Стилизирана карта на зарядното покритие на Балканите' : 'Stylized map of EV charging coverage across the Balkans') ?>">
+                <div class="network-map__top"><span><i></i> EVSmartRoute Cloud</span><strong data-network-map-label><?= e($lang === 'bg' ? 'Всички мрежи' : 'All networks') ?></strong></div>
+                <svg viewBox="0 0 720 520" role="img" aria-hidden="true">
+                    <defs><linearGradient id="balkanGlow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0ea5e9"/><stop offset="1" stop-color="#22c55e"/></linearGradient></defs>
+                    <path class="network-map__outline" d="M105 80 206 48l67 28 72-18 43 48 83 4 36 47 70 22-16 63 49 56-33 65 18 76-91 35-56-32-65 30-53-39-70 19-28-60-71-23 12-71-46-54 42-58-25-58z"/>
+                    <path class="network-map__route" d="M134 353 C225 294 260 342 329 252 S475 207 589 142"/>
+                    <?php foreach ([
+                        ['tesla',150,338], ['tesla',350,247], ['tesla',570,151],
+                        ['eldrive',205,256], ['eldrive',302,330], ['eldrive',430,188], ['eldrive',515,307],
+                        ['fines',255,205], ['fines',368,370], ['fines',482,257],
+                        ['evpoint',174,380], ['evpoint',323,270], ['evpoint',555,230],
+                        ['electrip',286,146], ['electrip',454,342], ['electrip',600,292],
+                        ['vsichkotok',225,315], ['vsichkotok',395,218], ['vsichkotok',508,393],
+                    ] as [$network, $x, $y]): ?>
+                        <g class="network-marker" data-map-network="<?= e($network) ?>" transform="translate(<?= $x ?> <?= $y ?>)"><circle class="network-marker__pulse" r="15"/><circle r="5"/></g>
+                    <?php endforeach; ?>
+                </svg>
+                <div class="network-map__legend"><span><i class="is-live"></i>Live status</span><span><i></i>Network coverage</span></div>
+            </div>
+
             <div class="operator-grid reveal">
-                <?php foreach ([['Tesla', 'Supercharger'], ['Eldrive', 'Bulgaria'], ['FINES', 'Charging'], ['EVPoint', 'Network'], ['Electrip', 'Europe'], ['Kia', 'Charge']] as [$operator, $meta]): ?>
-                    <div class="operator-card glass-panel"><span class="operator-dot"></span><strong><?= e($operator) ?></strong><small><?= e($meta) ?></small></div>
+                <?php foreach ($cpoNetworks as $operator): ?>
+                    <button class="operator-card glass-panel" type="button" data-network-card="<?= e($operator['id']) ?>" data-hpc="<?= $operator['power'] >= 250 ? 'true' : 'false' ?>" data-live="<?= $operator['live'] ? 'true' : 'false' ?>" style="--operator-color:<?= e($operator['color']) ?>" aria-pressed="false" aria-label="<?= e($operator['name']) ?>">
+                        <span class="operator-card__logo"><img src="<?= e(asset_url('/assets/images/operators/' . $operator['logo'])) ?>" width="360" height="96" alt="<?= e($operator['name']) ?>" loading="lazy" decoding="async"></span>
+                        <span class="operator-card__details"><span>⚡ <?= e(($lang === 'bg' ? 'До ' : 'Up to ') . $operator['power'] . ' kW') ?></span><span class="<?= $operator['live'] ? 'is-live' : '' ?>">● <?= e($operator['live'] ? 'Live OCPI Sync' : ($lang === 'bg' ? 'Мрежови данни' : 'Network data')) ?></span></span>
+                    </button>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -240,6 +294,12 @@ require TEMPLATE_PATH . '/header.php';
 <script type="application/json" id="homeTranslations"><?= json_encode([
     'supported' => t('home.compatibility.supported'),
     'noResults' => t('home.compatibility.no_results'),
+    'specCompatible' => $lang === 'bg' ? 'Напълно съвместим с алгоритъма за реален пробег' : 'Fully compatible with the real-world range algorithm',
+    'specCapacity' => $lang === 'bg' ? 'Капацитет' : 'Capacity',
+    'specPeak' => $lang === 'bg' ? 'Пиково зареждане' : 'Peak charging',
+    'specCurve' => $lang === 'bg' ? 'Крива на зареждане' : 'Charging curve',
+    'specChargeTime' => $lang === 'bg' ? '10% – 80% за %s мин' : '10% – 80% in %s min',
+    'specCurveValue' => $lang === 'bg' ? 'Предварително подгряване на батерията + OCPI Live' : 'Battery preconditioning + OCPI Live',
     'insightCold' => t('home.simulator.insight_cold'),
     'insightMild' => t('home.simulator.insight_mild'),
     'insightHot' => t('home.simulator.insight_hot'),

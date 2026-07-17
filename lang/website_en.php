@@ -24,7 +24,7 @@ return [
         ],
         'stats' => [
             'aria' => 'Platform coverage', 'locations' => 'charging locations across the Balkans', 'connectors' => 'charging connectors',
-            'operators' => 'supported operators', 'models' => 'electric vehicle models',
+            'accuracy' => 'SoC prediction accuracy', 'models' => 'electric vehicle models',
         ],
         'compatibility' => [
             'eyebrow' => 'EV Catalog', 'title' => 'Compatible with your electric car.',

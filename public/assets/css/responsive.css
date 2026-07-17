@@ -57,6 +57,9 @@
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
     .stat-item:nth-child(3)::before { display: none; }
     .battery-layout { grid-template-columns: 1fr; }
+    .network-experience { grid-template-columns: 1fr; }
+    .network-intro { max-width:680px; }
+    .network-map { min-height:430px; }
     .inner-hero { min-height: 540px; }
     .content-page-grid { grid-template-columns: 1fr; }
     .faq-layout, .showcase-row, .data-hero-layout, .offline-layout { grid-template-columns: 1fr; }
@@ -108,12 +111,20 @@
     .vehicle-search input { font-size: .82rem; }
     .vehicle-search__hint { display: none; }
     .brand-marquee { gap: 18px 24px; margin-top: 48px; }
+    .ev-spec-card { padding: 22px 18px; }
+    .ev-spec-card__head { align-items: flex-start; flex-direction: column; }
+    .ev-spec-grid { grid-template-columns: 1fr; }
     .battery-dashboard { padding: 24px 18px; }
     .battery-photo, .battery-photo img { min-height: 360px; height: 360px; }
     .battery-visual { min-height: 220px; }
     .battery-shell { width: 180px; height: 84px; }
     .battery-shell::after { top: 23px; }
     .operator-grid { grid-template-columns: repeat(2, 1fr); }
+    .network-map { min-height:360px; }
+    .network-map__top { align-items:flex-start; flex-direction:column; gap:6px; }
+    .network-map__legend { left:18px; right:auto; }
+    .operator-card { min-height:132px; padding-inline:10px; }
+    .operator-card__details { align-items:center; flex-direction:column; gap:4px; }
     .plan-grid { grid-template-columns: 1fr; }
     .detailed-plan-grid { grid-template-columns: 1fr; }
     .billing-switch { width: 100%; }
