@@ -15,15 +15,15 @@
     </div>
 </section>
 
-<div class="cookie-modal" id="cookieConsentModal" hidden>
-    <button class="cookie-modal__backdrop" type="button" data-cookie-action="close-settings" aria-label="<?= e(t('cookie_consent.close')) ?>"></button>
-    <section class="cookie-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="cookieSettingsTitle">
+<div class="cookie-modal" id="cookieConsentModal" aria-hidden="true" hidden>
+    <button class="cookie-modal__backdrop" type="button" tabindex="-1" data-cookie-action="close-settings" aria-label="<?= e(t('cookie_consent.close')) ?>"></button>
+    <section class="cookie-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="cookieSettingsTitle" aria-describedby="cookieSettingsIntro">
         <header class="cookie-modal__header">
             <div><span>EVSmartRoute</span><h2 id="cookieSettingsTitle"><?= e(t('cookie_consent.settings_title')) ?></h2></div>
             <button class="cookie-modal__close" type="button" data-cookie-action="close-settings" aria-label="<?= e(t('cookie_consent.close')) ?>">&times;</button>
         </header>
         <div class="cookie-modal__body">
-            <p class="cookie-modal__intro"><?= e(t('cookie_consent.settings_intro')) ?></p>
+            <p class="cookie-modal__intro" id="cookieSettingsIntro"><?= e(t('cookie_consent.settings_intro')) ?></p>
 
             <div class="cookie-category">
                 <div><h3><?= e(t('cookie_consent.necessary_title')) ?></h3><p><?= e(t('cookie_consent.necessary_text')) ?></p></div>

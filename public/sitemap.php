@@ -13,7 +13,7 @@ require TEMPLATE_PATH . '/functions.php';
 
 $routes = [
     'home', 'features', 'route-planning', 'charging-network', 'battery-intelligence',
-    'live-traffic', 'pricing', 'real-time-data', 'about', 'faq', 'contact', 'blog',
+    'live-traffic', 'pricing', 'about', 'faq', 'contact', 'blog',
     'privacy', 'terms', 'cookies', 'eu-data-act',
 ];
 $lastModified = gmdate('Y-m-d', max(
@@ -34,7 +34,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>', PHP_EOL;
         <loc><?= htmlspecialchars(SITE_URL . localized_url($route, $language), ENT_XML1, 'UTF-8') ?></loc>
         <lastmod><?= $lastModified ?></lastmod>
         <changefreq><?= in_array($route, ['home', 'blog'], true) ? 'weekly' : 'monthly' ?></changefreq>
-        <priority><?= $route === 'home' ? '1.0' : (in_array($route, ['features', 'pricing', 'real-time-data'], true) ? '0.9' : '0.7') ?></priority>
+        <priority><?= $route === 'home' ? '1.0' : (in_array($route, ['features', 'charging-network', 'pricing'], true) ? '0.9' : '0.7') ?></priority>
         <xhtml:link rel="alternate" hreflang="bg" href="<?= htmlspecialchars(SITE_URL . localized_url($route, 'bg'), ENT_XML1, 'UTF-8') ?>" />
         <xhtml:link rel="alternate" hreflang="en" href="<?= htmlspecialchars(SITE_URL . localized_url($route, 'en'), ENT_XML1, 'UTF-8') ?>" />
         <xhtml:link rel="alternate" hreflang="x-default" href="<?= htmlspecialchars(SITE_URL . localized_url($route, DEFAULT_LANGUAGE), ENT_XML1, 'UTF-8') ?>" />
@@ -42,4 +42,3 @@ echo '<?xml version="1.0" encoding="UTF-8"?>', PHP_EOL;
 <?php endforeach; ?>
 <?php endforeach; ?>
 </urlset>
-

@@ -9,17 +9,18 @@
         </div>
         <div>
             <h2><?= e(t('footer.product')) ?></h2>
+            <a href="<?= e(localized_url()) ?>"><?= e(t('nav.home')) ?></a>
             <a href="<?= e(localized_url('features')) ?>"><?= e(t('nav.features')) ?></a>
-            <a href="<?= e(localized_url('route-planning')) ?>"><?= e(t('footer.route_planning')) ?></a>
             <a href="<?= e(localized_url('charging-network')) ?>"><?= e(t('nav.network')) ?></a>
-            <a href="<?= e(localized_url('real-time-data')) ?>"><?= e(t('nav.data')) ?></a>
             <a href="<?= e(localized_url('pricing')) ?>"><?= e(t('nav.pricing')) ?></a>
         </div>
         <div>
-            <h2><?= e(t('footer.company')) ?></h2>
-            <a href="<?= e(localized_url('about')) ?>"><?= e(t('footer.about')) ?></a>
+            <h2><?= e(t('footer.resources')) ?></h2>
+            <a href="<?= e(localized_url('route-planning')) ?>"><?= e(t('footer.route_planning')) ?></a>
+            <a href="<?= e(localized_url('charging-network')) ?>#live-data"><?= e(t('nav.data')) ?></a>
             <a href="<?= e(localized_url('blog')) ?>"><?= e(t('nav.blog')) ?></a>
             <a href="<?= e(localized_url('faq')) ?>"><?= e(t('footer.faq')) ?></a>
+            <a href="<?= e(localized_url('about')) ?>"><?= e(t('footer.about')) ?></a>
             <a href="<?= e(localized_url('contact')) ?>"><?= e(t('footer.contact')) ?></a>
         </div>
         <div>

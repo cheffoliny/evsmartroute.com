@@ -20,8 +20,22 @@ $route = resolve_route($requestPath);
 $lang = $route['lang'];
 $routeName = $route['route'];
 
+if (($_COOKIE['esr_lang'] ?? null) !== $lang) {
+    setcookie('esr_lang', $lang, [
+        'expires' => time() + 31536000,
+        'path' => '/',
+        'secure' => (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off'),
+        'httponly' => false,
+        'samesite' => 'Lax',
+    ]);
+}
+
 if ($route['redirect'] !== null) {
-    header('Location: ' . $route['redirect'], true, 302);
+    $redirectStatus = $route['status'] ?? 302;
+    if ($redirectStatus === 302) {
+        header('Cache-Control: private, no-store, max-age=0');
+    }
+    header('Location: ' . $route['redirect'], true, $redirectStatus);
     exit;
 }
 

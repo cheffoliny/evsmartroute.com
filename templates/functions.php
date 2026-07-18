@@ -20,13 +20,26 @@ function resolve_route(string $path): array
     $lang = $segments[0] ?? null;
 
     if (!in_array($lang, SUPPORTED_LANGUAGES, true)) {
-        return ['lang' => DEFAULT_LANGUAGE, 'route' => 'home', 'redirect' => '/' . DEFAULT_LANGUAGE . '/'];
+        $savedLanguage = (string) ($_COOKIE['esr_lang'] ?? '');
+        $preferredLanguage = in_array($savedLanguage, SUPPORTED_LANGUAGES, true) ? $savedLanguage : DEFAULT_LANGUAGE;
+        return ['lang' => $preferredLanguage, 'route' => 'home', 'redirect' => '/' . $preferredLanguage . '/'];
     }
 
     $slug = $segments[1] ?? '';
     $routes = array_flip(route_slugs($lang));
+    $resolvedRoute = $routes[$slug] ?? '404';
 
-    return ['lang' => $lang, 'route' => $routes[$slug] ?? '404', 'redirect' => null];
+    if ($resolvedRoute === 'real-time-data') {
+        $networkSlug = route_slugs($lang)['charging-network'];
+        return [
+            'lang' => $lang,
+            'route' => 'charging-network',
+            'redirect' => '/' . $lang . '/' . $networkSlug . '/#live-data',
+            'status' => 301,
+        ];
+    }
+
+    return ['lang' => $lang, 'route' => $resolvedRoute, 'redirect' => null];
 }
 
 function t(string $key, ?string $fallback = null): string

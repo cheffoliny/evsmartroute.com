@@ -36,6 +36,19 @@
         navigation.classList.remove('is-open');
     });
 
+    const languageDropdown = document.querySelector('[data-language-dropdown]');
+    document.addEventListener('click', (event) => {
+        if (languageDropdown?.open && !languageDropdown.contains(event.target)) {
+            languageDropdown.removeAttribute('open');
+        }
+    });
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && languageDropdown?.open) {
+            languageDropdown.removeAttribute('open');
+            languageDropdown.querySelector('summary')?.focus();
+        }
+    });
+
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const elements = document.querySelectorAll('.reveal');
 

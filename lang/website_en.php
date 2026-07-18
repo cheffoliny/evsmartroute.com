@@ -4,8 +4,8 @@ return [
         'home' => ['title' => 'EVSmartRoute — Intelligent EV route planning', 'description' => 'Plan your EV journey with real-world range, compatible charging stations, prices and live traffic.'],
         'placeholder' => ['title' => 'EVSmartRoute — Page in progress', 'description' => 'This EVSmartRoute section is being developed.'],
     ],
-    'nav' => ['home' => 'Home', 'features' => 'Features', 'network' => 'Charging network', 'pricing' => 'Pricing', 'blog' => 'Blog', 'data' => 'Live data'],
-    'actions' => ['plan_route' => 'Plan a route', 'see_how' => 'See how it works', 'login' => 'Log in', 'start_free' => 'Start for free', 'start_trial' => 'Start Premium Trial', 'back_home' => 'Back home'],
+    'nav' => ['home' => 'Home', 'features' => 'Features', 'network' => 'Coverage', 'pricing' => 'Pricing', 'blog' => 'Blog', 'data' => 'Live data'],
+    'actions' => ['plan_route' => 'Plan a route', 'see_how' => 'See how it works', 'login' => 'LOGIN', 'start_free' => 'Start for free', 'try_free' => 'TRY FOR FREE', 'start_trial' => 'Start Premium Trial', 'back_home' => 'Back home'],
     'accessibility' => ['skip' => 'Skip to main content', 'menu' => 'Open menu', 'primary_nav' => 'Primary navigation', 'language' => 'Choose language', 'light_theme' => 'Switch to light theme', 'dark_theme' => 'Switch to dark theme'],
     'home' => [
         'hero' => [
@@ -66,7 +66,7 @@ return [
     ],
     'footer' => [
         'description' => 'Intelligent EV route planning across the Balkans and Europe.', 'product' => 'Product',
-        'route_planning' => 'Route planning', 'company' => 'Company', 'about' => 'About us', 'faq' => 'FAQ', 'contact' => 'Contact',
+        'route_planning' => 'Route planning', 'company' => 'Company', 'about' => 'About us', 'faq' => 'FAQ', 'contact' => 'Contact', 'resources' => 'Data & Resources',
         'legal' => 'Legal', 'privacy' => 'Privacy', 'terms' => 'Terms', 'cookies' => 'Cookies', 'eu_data' => 'EU Data Act',
         'rights' => 'All rights reserved.', 'status' => 'All systems operational',
     ],
@@ -80,10 +80,10 @@ return [
         'settings_title' => 'Cookie settings',
         'settings_intro' => 'Choose which categories you allow. You can change your decision at any time from the footer.',
         'necessary_title' => 'Essential',
-        'necessary_text' => 'Support security, core navigation and storage of your cookie choice.',
+        'necessary_text' => 'Support security, core navigation and the language and colour theme you explicitly select.',
         'always_active' => 'Always active',
         'preferences_title' => 'Preferences',
-        'preferences_text' => 'Remember conveniences such as your chosen theme and language settings.',
+        'preferences_text' => 'Enable additional personalisation and conveniences beyond the essential interface settings.',
         'analytics_title' => 'Analytics',
         'analytics_text' => 'Help us understand aggregate website usage and decide what to improve.',
         'reject_optional' => 'Reject optional',

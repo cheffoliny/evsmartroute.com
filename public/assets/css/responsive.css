@@ -1,6 +1,5 @@
 @media (max-width: 1350px) {
-    .brand__logo--mark { height: 30px; }
-    .brand__logo--text { height: 28px; }
+    .brand__logo--mark,.brand__logo--text { height:40px; }
     .site-header__inner { gap: 18px; }
     .primary-nav { gap: 14px; }
     .header-actions { gap: 10px; }
@@ -20,16 +19,20 @@
     .flow-node { min-width: 105px; }
     .site-header__inner { gap: 22px; }
     .header-actions { gap: 12px; }
-    .brand__logo--mark { height: 28px; }
-    .brand__logo--text { height: 26px; }
+    .brand__logo--mark,.brand__logo--text { height:40px; }
+}
+
+@media (max-width: 1024px) {
+    .brand__logo--mark { height:38px; }
+    .brand__logo--text { display:none; }
 }
 
 @media (max-width: 900px) {
     :root { --header-height: 70px; }
     .container { width: min(calc(100% - 32px), var(--container)); }
     .site-header__inner { justify-content: space-between; }
-    .brand__logo--mark { height: 26px; }
-    .brand__logo--text { height: 23px; }
+    .brand__logo--mark { height:38px; }
+    .brand__logo--text { display:none; }
     .menu-toggle { display: block; order: 3; }
     .primary-nav { position: fixed; inset: var(--header-height) 16px auto; display: grid; gap: 0; padding: 12px; border: 1px solid var(--glass-border); border-radius: 18px; background: rgba(11,15,25,.96); box-shadow: 0 30px 60px rgba(0,0,0,.4); backdrop-filter: blur(16px); transition: .2s ease; }
     [data-theme="light"] .primary-nav { background: rgba(255,255,255,.97); box-shadow: 0 30px 60px rgba(15,23,42,.15); }
@@ -92,10 +95,10 @@
 @media (max-width: 600px) {
     .section { padding: 82px 0; }
     h1 { font-size: clamp(2.75rem, 14vw, 4.2rem); }
-    .language-switcher { margin-left: auto; }
+    .language-dropdown { margin-left:auto; }
     .brand { gap: 7px; }
-    .brand__logo--mark { height: 25px; }
-    .brand__logo--text { height: 20px; }
+    .brand__logo--mark { height:38px; }
+    .brand__logo--text { display:none; }
     .range-simulator { padding: 23px 20px; }
     .hero--fullbleed { min-height: 690px; }
     .hero__backdrop { object-position: 62% center; }

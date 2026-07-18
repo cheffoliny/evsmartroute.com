@@ -68,7 +68,7 @@ return ['pages' => [
         ],
     ],
     'charging-network' => [
-        'seo_title' => 'EV charging network', 'seo_description' => 'Operators, connectors, power and availability in one place.', 'eyebrow' => 'Charging Network', 'title' => 'More operators. One consistent view.', 'intro' => 'Find compatible stations without jumping between multiple maps.', 'cta' => 'Open the map', 'image_alt' => 'Electric vehicle at a modern mountain charging station', 'visual_caption' => 'One map for regional and international charging networks.',
+        'seo_title' => 'Charging network and live data | EVSmartRoute', 'seo_description' => 'Operators, connectors, power, tariffs and availability in one place, with transparent OCPI/OCPP live-data explanations.', 'eyebrow' => 'Charging Network', 'title' => 'More operators. One consistent view.', 'intro' => 'Find compatible stations without jumping between multiple maps.', 'cta' => 'Open the map', 'image_alt' => 'Electric vehicle at a modern mountain charging station', 'visual_caption' => 'One map for regional and international charging networks.',
         'sections' => [
             ['icon' => '⚡', 'title' => 'Connectors and power', 'text' => 'CCS2, CHAdeMO and Type 2 with clear AC/DC power.', 'items' => ['Power filter', 'Vehicle compatibility']],
             ['icon' => '◉', 'title' => 'Operator and status', 'text' => 'Unified data from regional and international networks.', 'items' => ['Live partner status', 'Last update']],
@@ -156,17 +156,128 @@ return ['pages' => [
         ], 'note_title' => 'Privacy contact', 'note' => 'For privacy requests: privacy@evsmartroute.com. This text will receive final legal review before production launch.',
     ],
     'terms' => [
-        'seo_title' => 'Terms of service | EVSmartRoute', 'seo_description' => 'Terms governing the use of EVSmartRoute.', 'eyebrow' => 'Legal', 'title' => 'Terms of service', 'intro' => 'These terms govern access to the EVSmartRoute website and application.',
+        'seo_title' => 'Terms of use | EVSmartRoute',
+        'seo_description' => 'Terms governing the EVSmartRoute website, EV planner, accounts and subscription services.',
+        'eyebrow' => 'Legal',
+        'title' => 'Terms of use',
+        'intro' => 'These terms govern access to the EVSmartRoute website, EV planner, user accounts and related services.',
+        'last_updated_label' => 'Last updated',
+        'last_updated' => '18 July 2026',
+        'toc_title' => 'Contents',
+        'toc_aria' => 'Terms of use contents',
+        'acceptance' => 'By accessing or using EVSmartRoute, you confirm that you have read and accept these terms. If you use the service on behalf of an organisation, you represent that you have authority to bind it to these terms.',
         'sections' => [
-            ['title' => 'Nature of the service', 'text' => 'Routes, SoC, status and prices are informational forecasts, not guarantees.', 'items' => ['Drivers remain responsible for safety', 'Follow official road signs']],
-            ['title' => 'Accounts and subscriptions', 'text' => 'Users protect account access and manage subscriptions under the displayed terms.', 'items' => ['Accurate registration data', 'Transparent renewal']],
-            ['title' => 'Acceptable use', 'text' => 'Abuse, automated extraction and security interference are prohibited.', 'items' => ['No unauthorised access', 'No protected-data republication']],
-        ], 'note_title' => 'Draft legal text', 'note' => 'These terms require final legal review before commercial launch.',
+            [
+                'id' => 'scope', 'title' => '1. Scope and contracting party',
+                'paragraphs' => [
+                    'EVSmartRoute is a web and application service for planning electric-vehicle journeys. In these terms, “EVSmartRoute”, “we”, “us” and “our” mean the service operator identified on the contact page.',
+                    'The service includes free and paid features and may use maps, traffic, weather, charging infrastructure and other resources supplied by third parties.',
+                ],
+            ],
+            [
+                'id' => 'intended-use', 'title' => '2. Intended use',
+                'paragraphs' => ['EVSmartRoute is intended for good-faith planning of your own electric-vehicle journeys. You receive a limited, personal, non-exclusive and non-transferable right to use the service under your selected plan.'],
+                'items' => ['Comply with these terms and applicable third-party provider rules.', 'Do not rely on the results as the sole source for safety-critical decisions.', 'Notify us if you suspect a breach or misuse of the service.'],
+            ],
+            [
+                'id' => 'navigation-safety', 'title' => '3. Navigation and safety',
+                'paragraphs' => [
+                    'Routes, travel time, consumption, SoC and recommended charging stops are computational forecasts. They do not replace driver judgement, official road signs, traffic rules or directions from competent authorities.',
+                    'Do not enter information or interact with the interface in a way that distracts you while driving. Monitor the remaining charge and maintain a reasonable reserve and an alternative charging option.',
+                ],
+                'items' => ['GPS positioning and map data may be inaccurate or incomplete.', 'Actual range is affected by temperature, wind, speed, elevation, traffic, payload, tyres, climate control and battery condition.', 'The driver remains responsible for safe and lawful operation of the vehicle.'],
+            ],
+            [
+                'id' => 'accounts', 'title' => '4. Accounts and security',
+                'paragraphs' => ['You are responsible for accurate registration information, protecting your credentials and activity performed through your account. Do not grant access to another person unless we provide a feature expressly designed for sharing or delegated access.'],
+                'items' => ['Report unauthorised access without delay.', 'Keep an active email address for important notices.', 'Social sign-in is also subject to the relevant provider terms.'],
+            ],
+            [
+                'id' => 'plans-payments', 'title' => '5. FREE, PREMIUM, trials and payments',
+                'paragraphs' => [
+                    'The features, limits, prices and duration of each plan are described on the Subscriptions page and in the application before activation. A Premium trial converts into a paid subscription only where this is clearly disclosed and you provide the required consent and payment details.',
+                    'Where applicable, fees are collected in advance through an external payment processor. We may restrict paid features following a failed payment. Statutory cancellation, refund and consumer-protection rights remain unaffected.',
+                ],
+            ],
+            [
+                'id' => 'user-data', 'title' => '6. User-provided data and content',
+                'paragraphs' => [
+                    'You may provide coordinates, routes, vehicle settings, telemetry, preferences and feedback. You retain your rights in that content and permit us to process it only as necessary to provide, secure and improve the service.',
+                    'You represent that you have the right to use submitted data. Do not submit another person’s private, confidential or protected information without a valid legal basis and consent.',
+                ],
+            ],
+            [
+                'id' => 'acceptable-use', 'title' => '7. Prohibited use',
+                'paragraphs' => ['You must not use EVSmartRoute in a way that violates the law, the rights of others, security or the normal operation of the service.'],
+                'items' => [
+                    'No automated extraction, bots, spiders, bulk caching, meta-searching or systematic copying without written API authorisation.',
+                    'No circumvention of access controls, authentication, rate limits or other technical safeguards.',
+                    'No reverse engineering, decompilation or attempts to derive algorithms, models, source code or trade secrets, except where expressly permitted by law.',
+                    'No resale, republication or creation of a competing database from stations, tariffs, results or service content.',
+                    'No unauthorised vulnerability testing, overloading, interference, malicious code, spam or monitoring of another person without their knowledge and valid consent.',
+                ],
+            ],
+            [
+                'id' => 'third-party-data', 'title' => '8. Third-party data and services',
+                'paragraphs' => [
+                    'EVSmartRoute combines information from mapping providers, charging networks, public registers, traffic, geocoding, weather and other partner sources. That information remains subject to the relevant provider rights and terms.',
+                    'An “available” status is the latest operational signal received, not a reservation. A displayed tariff is an estimate; the charging operator determines the final price, fees, access and charging conditions.',
+                ],
+            ],
+            [
+                'id' => 'accuracy', 'title' => '9. Accuracy and no warranties',
+                'paragraphs' => [
+                    'The service is supplied “as is” and on the basis of information currently available. We aim for accuracy and reliability but do not guarantee uninterrupted operation, a particular route, charger availability, connector compatibility, price, charging time, arrival time or remaining charge.',
+                    'We recommend validating the vehicle profile, maintaining an energy safety margin and checking critical information in the charging operator’s application.',
+                ],
+            ],
+            [
+                'id' => 'service-changes', 'title' => '10. Service changes and availability',
+                'paragraphs' => ['We may add, change or remove features, perform maintenance and temporarily restrict access for technical, security, legal or business reasons. For material changes to a paid service, we will provide information and remedies required by applicable law.'],
+            ],
+            [
+                'id' => 'liability', 'title' => '11. Limitation of liability',
+                'paragraphs' => [
+                    'To the maximum extent permitted by law, EVSmartRoute is not liable for indirect or consequential loss, lost profits, data loss, business interruption or loss arising from inaccurate third-party information, an unavailable charging station, or third-party hardware, networks or services.',
+                    'Nothing in these terms excludes or limits liability that cannot lawfully be excluded, including mandatory consumer rights.',
+                ],
+            ],
+            [
+                'id' => 'suspension', 'title' => '12. Suspension and termination',
+                'paragraphs' => [
+                    'You may stop using the service and request account closure. We may temporarily restrict or terminate access following a material breach, abuse, a security risk, a legal requirement or an unpaid amount that is due.',
+                    'Cancellation of a paid plan operates under the terms displayed at purchase. Data retention and deletion are governed by the Privacy Policy and applicable law.',
+                ],
+            ],
+            [
+                'id' => 'intellectual-property', 'title' => '13. Intellectual property',
+                'paragraphs' => ['The EVSmartRoute name, brand, design, software, algorithms, database structure, original content and documentation are owned by us or used under licence. These terms do not transfer ownership or trade-mark rights.'],
+            ],
+            [
+                'id' => 'privacy', 'title' => '14. Privacy and cookies',
+                'paragraphs' => ['We process personal data under the Privacy Policy. Optional cookies and similar technologies are used only according to your selection in the consent panel. You are responsible for not using the service to violate privacy or track another person without a lawful basis.'],
+            ],
+            [
+                'id' => 'updates-notices', 'title' => '15. Changes to these terms and notices',
+                'paragraphs' => ['We may update these terms following changes to the service, law or business model. We will publish the new date and notify material changes through the application, website or supplied email address. Continued use after the effective date constitutes acceptance; if you disagree, you must stop using the service.'],
+            ],
+            [
+                'id' => 'law-disputes', 'title' => '16. Governing law and disputes',
+                'paragraphs' => ['These terms are governed by the laws of the Republic of Bulgaria and applicable European Union law. Disputes should first be submitted through our contact page. Court jurisdiction and mandatory consumer rights remain governed by applicable law and the consumer’s country of habitual residence.'],
+            ],
+            [
+                'id' => 'final-provisions', 'title' => '17. Final provisions',
+                'paragraphs' => ['If a provision is held unenforceable, the remaining provisions continue in effect. Failure to enforce a right is not a waiver. You may not transfer your account or rights without our consent; we may transfer the service as part of a reorganisation or acquisition subject to applicable law and consumer rights.'],
+            ],
+        ],
+        'note_title' => 'Legal review required',
+        'note' => 'This is an original working draft aligned with EVSmartRoute functionality. Before payments and commercial launch, it must be approved by qualified legal counsel and completed with the full legal name, registration number, address and contact details of the actual service operator.',
     ],
     'cookies' => [
         'seo_title' => 'Cookie policy | EVSmartRoute', 'seo_description' => 'Information about essential, analytical and preference cookies.', 'eyebrow' => 'Legal', 'title' => 'Cookie policy', 'intro' => 'We use essential technologies to operate the service and optional ones only after your choice.',
         'sections' => [
-            ['title' => 'Essential', 'text' => 'Maintain sessions, security and language preferences.', 'items' => ['Always active', 'Not used for advertising']],
+            ['title' => 'Essential', 'text' => 'Maintain sessions, security and the language and colour theme explicitly selected by the visitor.', 'items' => ['Always active', 'Not used for advertising']],
+            ['title' => 'Preferences', 'text' => 'Enable additional personalisation beyond the essential interface settings.', 'items' => ['Consent required', 'Can be disabled at any time']],
             ['title' => 'Analytics', 'text' => 'Help us understand aggregate page use.', 'items' => ['Consent required', 'Consent can be withdrawn']],
             ['title' => 'Management', 'text' => 'Preferences can be changed at any time through the consent panel.', 'items' => ['Clear choice', 'No preselected optional categories']],
         ],
