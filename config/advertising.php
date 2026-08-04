@@ -12,10 +12,10 @@ declare(strict_types=1);
 return [
     'enabled' => false,
     'provider' => 'adsense',
-    'client' => '',
+    'client' => 'ca-pub-7481074142505098',
     'test_mode' => false,
     'slots' => [
-        'home_after_simulator' => '',
-        'home_before_pricing' => '',
+        'home_after_simulator' => '6464491051',
+        'home_before_pricing' => '3247566705',
     ],
 ];
