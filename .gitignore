@@ -2,6 +2,7 @@
 .env
 .env.*
 !.env.example
+config/*.local.php
 
 # Runtime and dependency directories
 vendor/
@@ -21,4 +22,3 @@ Thumbs.db
 # Local Codex metadata
 .agents/
 .codex/
-

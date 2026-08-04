@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="google-adsense-account" content="ca-pub-7481074142505098">
     <meta name="theme-color" content="#0b0f19">
     <script>
         (() => {
@@ -37,6 +38,7 @@
     <script src="<?= e(asset_url('/assets/js/theme-toggle.js')) ?>" defer></script>
     <script src="<?= e(asset_url('/assets/js/cookie-consent.js')) ?>" defer></script>
     <script src="<?= e(asset_url('/assets/js/analytics.js')) ?>" defer></script>
+    <script src="<?= e(asset_url('/assets/js/ads.js')) ?>" defer></script>
     <?php if (($pageKey ?? '') === 'home'): ?>
         <script src="<?= e(asset_url('/assets/js/simulator.js')) ?>" defer></script>
     <?php endif; ?>
@@ -48,6 +50,7 @@
     <?php endif; ?>
 </head>
 <body>
+<script id="evsrAdvertisingConfig" type="application/json"><?= json_encode(advertising_public_config(), JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
 <div id="page-loader" class="page-loader" aria-hidden="true">
     <div class="page-loader__core">
         <span class="page-loader__ring"></span>

@@ -12,6 +12,16 @@
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 .has-parallax { translate: 0 var(--parallax-y, 0); will-change: translate; }
 
+/* Consent-gated advertising. Dimensions are reserved only after consent. */
+.ad-placement[hidden] { display: none !important; }
+.ad-placement { padding: 18px 0; }
+.ad-placement__container { position: relative; }
+.ad-placement__label { display: block; margin: 0 0 6px; color: var(--text-muted); font-size: .62rem; font-weight: 800; letter-spacing: .08em; text-align: center; text-transform: uppercase; }
+.ad-placement__surface { display: grid; min-height: 112px; overflow: hidden; place-items: center; border: 1px solid var(--glass-border); border-radius: 12px; background: rgba(15, 23, 42, .2); }
+.ad-placement__surface .adsbygoogle { width: 100%; min-height: 100px; }
+[data-theme="light"] .ad-placement__surface { background: rgba(248, 250, 252, .8); box-shadow: 0 10px 32px rgba(15, 23, 42, .05); }
+@media (max-width: 760px) { .ad-placement { padding: 12px 0; } .ad-placement__surface { min-height: 100px; border-radius: 10px; } }
+
 html.has-cookie-modal { overflow: hidden; }
 .cookie-banner[hidden], .cookie-modal[hidden] { display: none !important; }
 .cookie-banner {

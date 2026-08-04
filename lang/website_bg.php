@@ -64,11 +64,11 @@ return [
         'pricing' => [
             'eyebrow' => 'Ясни планове', 'title' => 'Започнете безплатно. Пътувайте без ограничения.',
             'description' => 'Без скрити такси и без карта за пробния период.', 'free_name' => 'FREE', 'forever' => 'завинаги',
-            'free_routes' => 'До {{free.daily_routes}} планирания на ден', 'free_distance' => 'Маршрути до {{free.max_route_km}} km', 'free_vehicle' => '{{free.garage_cars}} автомобил в гаража',
+            'free_routes' => 'До {{free.daily_routes}} планирания на ден', 'free_distance' => 'Маршрути до {{free.max_route_km}} km', 'free_vehicle' => '{{free.garage_cars}} автомобил в гаража', 'basic_routing' => 'Базово маршрутизиране',
             'no_multistop' => 'Без multi-stop маршрути', 'no_traffic' => 'Без Live Traffic', 'popular' => 'Най-популярен',
             'month' => 'месец', 'trial' => '1 месец безплатно', 'unlimited_routes' => 'Неограничени планирания',
             'long_routes' => 'Дълги международни маршрути', 'multistop' => 'Multi-stop планиране',
-            'unlimited_garage' => 'Неограничен EV гараж', 'live_traffic' => 'Live Traffic от TomTom',
+            'unlimited_garage' => 'Неограничен EV гараж', 'live_traffic' => 'Live Traffic от TomTom', 'advanced_routing' => 'Разширено интелигентно маршрутизиране',
             'compare_all' => 'Сравнете всички възможности',
         ],
         'foundation' => [
@@ -87,6 +87,9 @@ return [
         'privacy' => 'Поверителност', 'terms' => 'Общи условия', 'cookies' => 'Бисквитки', 'eu_data' => 'EU Data Act',
         'rights' => 'Всички права запазени.', 'status' => 'Всички системи работят',
     ],
+    'advertising' => [
+        'sponsored' => 'Реклама',
+    ],
     'cookie_consent' => [
         'title' => 'Вашият избор за бисквитките',
         'description' => 'Използваме необходими технологии за сигурна работа на сайта. Допълнителните бисквитки се активират само с ваше разрешение.',
@@ -103,6 +106,8 @@ return [
         'preferences_text' => 'Позволяват допълнителна персонализация и удобства извън основните настройки на интерфейса.',
         'analytics_title' => 'Аналитични',
         'analytics_text' => 'Помагат ни да разбираме обобщено как се използва сайтът и какво да подобрим.',
+        'advertising_title' => 'Рекламни',
+        'advertising_text' => 'Позволяват показване и измерване на реклами, които подпомагат безплатната работа и поддръжката на EVSmartRoute.',
         'reject_optional' => 'Откажи допълнителните',
         'save' => 'Запази избора',
         'close' => 'Затвори настройките',

@@ -17,18 +17,18 @@ function load_plan_catalog(): array
     }
 
     $fallback = [
-        'schema_version' => 1,
+        'schema_version' => 2,
         'currency' => 'EUR',
         'trial' => ['duration' => 'P1M'],
         'plans' => [
             'free' => [
                 'limits' => ['max_route_km' => 500.0, 'daily_routes' => 10, 'garage_cars' => 1, 'saved_routes' => 2],
-                'features' => ['multi_stop' => false, 'live_traffic' => false],
+                'features' => ['multi_stop' => false, 'live_traffic' => false, 'advanced_routing' => false],
                 'prices' => [],
             ],
             'premium' => [
                 'limits' => ['max_route_km' => null, 'daily_routes' => null, 'garage_cars' => null, 'saved_routes' => null],
-                'features' => ['multi_stop' => true, 'live_traffic' => true],
+                'features' => ['multi_stop' => true, 'live_traffic' => true, 'advanced_routing' => true],
                 'prices' => [
                     'monthly' => ['amount' => 4.99, 'currency' => 'EUR', 'interval' => 'month'],
                     'yearly' => ['amount' => 39.99, 'currency' => 'EUR', 'interval' => 'year'],

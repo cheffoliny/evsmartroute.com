@@ -48,11 +48,11 @@ return [
         'pricing' => [
             'eyebrow' => 'Straightforward plans', 'title' => 'Start free. Travel without limits.',
             'description' => 'No hidden fees and no card required for the trial.', 'free_name' => 'FREE', 'forever' => 'forever',
-            'free_routes' => 'Up to {{free.daily_routes}} plans per day', 'free_distance' => 'Routes up to {{free.max_route_km}} km', 'free_vehicle' => '{{free.garage_cars}} vehicle in your garage',
+            'free_routes' => 'Up to {{free.daily_routes}} plans per day', 'free_distance' => 'Routes up to {{free.max_route_km}} km', 'free_vehicle' => '{{free.garage_cars}} vehicle in your garage', 'basic_routing' => 'Basic routing',
             'no_multistop' => 'No multi-stop routes', 'no_traffic' => 'No Live Traffic', 'popular' => 'Most popular',
             'month' => 'month', 'trial' => '1 month free', 'unlimited_routes' => 'Unlimited route plans',
             'long_routes' => 'Long international routes', 'multistop' => 'Multi-stop planning',
-            'unlimited_garage' => 'Unlimited EV garage', 'live_traffic' => 'Live Traffic by TomTom',
+            'unlimited_garage' => 'Unlimited EV garage', 'live_traffic' => 'Live Traffic by TomTom', 'advanced_routing' => 'Advanced intelligent routing',
             'compare_all' => 'Compare all features',
         ],
         'foundation' => [
@@ -70,6 +70,9 @@ return [
         'legal' => 'Legal', 'privacy' => 'Privacy', 'terms' => 'Terms', 'cookies' => 'Cookies', 'eu_data' => 'EU Data Act',
         'rights' => 'All rights reserved.', 'status' => 'All systems operational',
     ],
+    'advertising' => [
+        'sponsored' => 'Sponsored',
+    ],
     'cookie_consent' => [
         'title' => 'Your cookie choices',
         'description' => 'We use essential technologies to operate this website securely. Optional cookies are enabled only with your permission.',
@@ -86,6 +89,8 @@ return [
         'preferences_text' => 'Enable additional personalisation and conveniences beyond the essential interface settings.',
         'analytics_title' => 'Analytics',
         'analytics_text' => 'Help us understand aggregate website usage and decide what to improve.',
+        'advertising_title' => 'Advertising',
+        'advertising_text' => 'Allows ads to be displayed and measured, helping fund free access to and maintenance of EVSmartRoute.',
         'reject_optional' => 'Reject optional',
         'save' => 'Save choices',
         'close' => 'Close cookie settings',

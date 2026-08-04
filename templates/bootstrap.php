@@ -14,6 +14,7 @@ const DEFAULT_LANGUAGE = 'bg';
 
 require TEMPLATE_PATH . '/functions.php';
 require TEMPLATE_PATH . '/plan-catalog.php';
+require TEMPLATE_PATH . '/advertising.php';
 
 $requestPath = request_path();
 $route = resolve_route($requestPath);

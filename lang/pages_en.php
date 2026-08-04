@@ -9,11 +9,11 @@ return ['pages' => [
         'billing_label' => 'Billing period', 'monthly' => 'Monthly', 'yearly' => 'Yearly', 'save' => 'Save 33%',
         'free_description' => 'Essential tools for short everyday EV journeys.', 'monthly_description' => 'A flexible monthly plan you can cancel at any time.', 'yearly_description' => 'The best value for year-round travel — only €{{premium.yearly_month_equivalent}} per month.',
         'per_month' => '/ month', 'per_year' => '/ year', 'recommended' => 'Recommended',
-        'free_features' => ['{{free.daily_routes}} route plans per day', 'Routes up to {{free.max_route_km}} km', '{{free.garage_cars}} vehicle', 'Essential station filters'],
-        'premium_features' => ['Unlimited routes', 'Multi-stop and international journeys', 'Live Traffic by TomTom', 'Unlimited EV garage', 'Fast and Budget modes'],
+        'free_features' => ['{{free.daily_routes}} route plans per day', 'Routes up to {{free.max_route_km}} km', 'Basic routing', '{{free.garage_cars}} vehicle', 'Essential station filters'],
+        'premium_features' => ['Advanced intelligent routing', 'Unlimited routes', 'Multi-stop and international journeys', 'Live Traffic by TomTom', 'Unlimited EV garage', 'Fast and Budget modes'],
         'comparison_eyebrow' => 'No fine print', 'comparison_title' => 'Detailed comparison', 'feature' => 'Feature',
         'comparison' => [
-            ['Plans per day', '{{free.daily_routes}}', 'Unlimited'], ['Maximum distance', '{{free.max_route_km}} km', 'Unlimited'], ['Garage vehicles', '{{free.garage_cars}}', 'Unlimited'],
+            ['Plans per day', '{{free.daily_routes}}', 'Unlimited'], ['Maximum distance', '{{free.max_route_km}} km', 'Unlimited'], ['Routing', 'Basic', 'Advanced intelligent'], ['Garage vehicles', '{{free.garage_cars}}', 'Unlimited'],
             ['Multi-stop', '—', 'Included'], ['Live Traffic', '—', 'TomTom Live'], ['Fast / Budget mode', '—', 'Included'], ['Detailed SoC forecast', 'Basic', 'Advanced'],
         ],
         'faq_title' => 'Payment questions', 'faq_intro' => 'Clear answers before you start Premium.',
@@ -274,11 +274,12 @@ return ['pages' => [
         'note' => 'This is an original working draft aligned with EVSmartRoute functionality. Before payments and commercial launch, it must be approved by qualified legal counsel and completed with the full legal name, registration number, address and contact details of the actual service operator.',
     ],
     'cookies' => [
-        'seo_title' => 'Cookie policy | EVSmartRoute', 'seo_description' => 'Information about essential, analytical and preference cookies.', 'eyebrow' => 'Legal', 'title' => 'Cookie policy', 'intro' => 'We use essential technologies to operate the service and optional ones only after your choice.',
+        'seo_title' => 'Cookie policy | EVSmartRoute', 'seo_description' => 'Information about essential, preference, analytics and advertising technologies.', 'eyebrow' => 'Legal', 'title' => 'Cookie policy', 'intro' => 'We use essential technologies to operate the service and optional technologies only after your explicit choice.',
         'sections' => [
             ['title' => 'Essential', 'text' => 'Maintain sessions, security and the language and colour theme explicitly selected by the visitor.', 'items' => ['Always active', 'Not used for advertising']],
             ['title' => 'Preferences', 'text' => 'Enable additional personalisation beyond the essential interface settings.', 'items' => ['Consent required', 'Can be disabled at any time']],
             ['title' => 'Analytics', 'text' => 'Help us understand aggregate page use.', 'items' => ['Consent required', 'Consent can be withdrawn']],
+            ['title' => 'Advertising', 'text' => 'May load advertising content and measure its performance. These technologies are not activated before consent.', 'items' => ['Explicit consent required', 'May include advertising-partner technologies', 'Consent can be withdrawn']],
             ['title' => 'Management', 'text' => 'Preferences can be changed at any time through the consent panel.', 'items' => ['Clear choice', 'No preselected optional categories']],
         ],
     ],

@@ -2,12 +2,13 @@
     'use strict';
 
     const COOKIE_NAME = 'esr_cookie_consent';
-    const CONSENT_VERSION = 2;
+    const CONSENT_VERSION = 3;
     const MAX_AGE_SECONDS = 60 * 60 * 24 * 180;
     const banner = document.getElementById('cookieConsentBanner');
     const modal = document.getElementById('cookieConsentModal');
     const preferencesInput = document.querySelector('[data-cookie-category="preferences"]');
     const analyticsInput = document.querySelector('[data-cookie-category="analytics"]');
+    const advertisingInput = document.querySelector('[data-cookie-category="advertising"]');
     let lastFocusedElement = null;
 
     const readCookie = (name) => document.cookie
@@ -25,6 +26,7 @@
                 necessary: true,
                 preferences: Boolean(value.preferences),
                 analytics: Boolean(value.analytics),
+                advertising: Boolean(value.advertising),
             };
         } catch (_) {
             return null;
@@ -45,8 +47,9 @@
         });
     };
 
-    const saveConsent = ({ preferences = false, analytics = false }) => {
-        const consent = { version: CONSENT_VERSION, necessary: true, preferences, analytics };
+    const saveConsent = ({ preferences = false, analytics = false, advertising = false }) => {
+        const previousConsent = readConsent();
+        const consent = { version: CONSENT_VERSION, necessary: true, preferences, analytics, advertising };
         const secure = location.protocol === 'https:' ? '; Secure' : '';
         const expires = new Date(Date.now() + MAX_AGE_SECONDS * 1000).toUTCString();
         document.cookie = `${COOKIE_NAME}=${encodeURIComponent(JSON.stringify(consent))}; Max-Age=${MAX_AGE_SECONDS}; Expires=${expires}; Path=/; SameSite=Lax${secure}`;
@@ -54,13 +57,15 @@
         banner.hidden = true;
         closeSettings(false);
         emitConsent(consent);
+        if (previousConsent?.advertising && !advertising) window.location.reload();
     };
 
     const openSettings = () => {
-        const consent = readConsent() || { preferences: false, analytics: false };
+        const consent = readConsent() || { preferences: false, analytics: false, advertising: false };
         lastFocusedElement = document.activeElement;
         preferencesInput.checked = Boolean(consent.preferences);
         analyticsInput.checked = Boolean(consent.analytics);
+        advertisingInput.checked = Boolean(consent.advertising);
         modal.hidden = false;
         document.documentElement.classList.add('has-cookie-modal');
         modal.setAttribute('aria-hidden', 'false');
@@ -80,11 +85,12 @@
         const action = trigger.dataset.cookieAction || 'settings';
         if (action === 'settings') openSettings();
         if (action === 'close-settings') closeSettings();
-        if (action === 'necessary') saveConsent({ preferences: false, analytics: false });
-        if (action === 'accept-all') saveConsent({ preferences: true, analytics: true });
+        if (action === 'necessary') saveConsent({ preferences: false, analytics: false, advertising: false });
+        if (action === 'accept-all') saveConsent({ preferences: true, analytics: true, advertising: true });
         if (action === 'save') saveConsent({
             preferences: preferencesInput.checked,
             analytics: analyticsInput.checked,
+            advertising: advertisingInput.checked,
         });
     });
 
@@ -114,6 +120,6 @@
         emitConsent(existingConsent);
     } else {
         window.setTimeout(() => { banner.hidden = false; }, 500);
-        emitConsent({ version: CONSENT_VERSION, necessary: true, preferences: false, analytics: false });
+        emitConsent({ version: CONSENT_VERSION, necessary: true, preferences: false, analytics: false, advertising: false });
     }
 })();

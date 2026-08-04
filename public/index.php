@@ -114,6 +114,8 @@ require TEMPLATE_PATH . '/header.php';
         </div>
     </section>
 
+    <?php render_ad_slot('home_after_simulator', 'ad-placement--wide'); ?>
+
     <section class="stats-section" aria-label="<?= e(t('home.stats.aria')) ?>">
         <div class="container stats-grid" data-stats>
             <?php foreach ([
@@ -252,6 +254,8 @@ require TEMPLATE_PATH . '/header.php';
         </div>
     </section>
 
+    <?php render_ad_slot('home_before_pricing', 'ad-placement--wide'); ?>
+
     <section class="section pricing-preview" aria-labelledby="pricing-title">
         <div class="container">
             <div class="section-heading section-heading--center reveal">
@@ -266,6 +270,7 @@ require TEMPLATE_PATH . '/header.php';
                     <ul class="plan-features">
                         <li class="is-included"><?= e(plan_copy(t('home.pricing.free_routes'))) ?></li>
                         <li class="is-included"><?= e(plan_copy(t('home.pricing.free_distance'))) ?></li>
+                        <li class="is-included"><?= e(t('home.pricing.basic_routing')) ?></li>
                         <li class="is-included"><?= e(plan_copy(t('home.pricing.free_vehicle'))) ?></li>
                         <li class="is-muted"><?= e(t('home.pricing.no_multistop')) ?></li>
                         <li class="is-muted"><?= e(t('home.pricing.no_traffic')) ?></li>
@@ -280,6 +285,7 @@ require TEMPLATE_PATH . '/header.php';
                     <ul class="plan-features">
                         <li class="is-included"><?= e(t('home.pricing.unlimited_routes')) ?></li>
                         <li class="is-included"><?= e(t('home.pricing.long_routes')) ?></li>
+                        <li class="is-included"><?= e(t('home.pricing.advanced_routing')) ?></li>
                         <li class="is-included"><?= e(t('home.pricing.multistop')) ?></li>
                         <li class="is-included"><?= e(t('home.pricing.unlimited_garage')) ?></li>
                         <li class="is-included"><?= e(t('home.pricing.live_traffic')) ?></li>

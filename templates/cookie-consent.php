@@ -39,6 +39,11 @@
                 <div><h3><?= e(t('cookie_consent.analytics_title')) ?></h3><p><?= e(t('cookie_consent.analytics_text')) ?></p></div>
                 <span class="cookie-switch"><input id="cookieAnalytics" type="checkbox" data-cookie-category="analytics"><span aria-hidden="true"></span></span>
             </label>
+
+            <label class="cookie-category" for="cookieAdvertising">
+                <div><h3><?= e(t('cookie_consent.advertising_title')) ?></h3><p><?= e(t('cookie_consent.advertising_text')) ?></p></div>
+                <span class="cookie-switch"><input id="cookieAdvertising" type="checkbox" data-cookie-category="advertising"><span aria-hidden="true"></span></span>
+            </label>
         </div>
         <footer class="cookie-modal__footer">
             <button class="cookie-button cookie-button--secondary" type="button" data-cookie-action="necessary"><?= e(t('cookie_consent.reject_optional')) ?></button>
