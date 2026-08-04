@@ -1,10 +1,16 @@
-<?php declare(strict_types=1); ?>
+<?php
+declare(strict_types=1);
+$advertisingPublicConfig = advertising_public_config();
+?>
 <!doctype html>
 <html lang="<?= e($lang) ?>" data-theme="dark">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="google-adsense-account" content="ca-pub-7481074142505098">
+    <?php if (($advertisingPublicConfig['cmpEnabled'] ?? false) === true && ($advertisingPublicConfig['client'] ?? '') !== ''): ?>
+        <script async data-evsr-ad-provider="adsense" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=<?= e((string) $advertisingPublicConfig['client']) ?>" crossorigin="anonymous"></script>
+    <?php endif; ?>
     <meta name="theme-color" content="#0b0f19">
     <script>
         (() => {
@@ -50,7 +56,7 @@
     <?php endif; ?>
 </head>
 <body>
-<script id="evsrAdvertisingConfig" type="application/json"><?= json_encode(advertising_public_config(), JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
+<script id="evsrAdvertisingConfig" type="application/json"><?= json_encode($advertisingPublicConfig, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
 <div id="page-loader" class="page-loader" aria-hidden="true">
     <div class="page-loader__core">
         <span class="page-loader__ring"></span>

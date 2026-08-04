@@ -26,14 +26,20 @@ function advertising_public_config(): array
 {
     $config = advertising_config();
     $client = trim((string) ($config['client'] ?? ''));
+    $providerValid = ($config['provider'] ?? '') === 'adsense';
+    $clientValid = preg_match('/^ca-pub-\d{16}$/', $client) === 1;
+    $cmpEnabled = ($config['cmp_enabled'] ?? false) === true
+        && $providerValid
+        && $clientValid;
     $enabled = ($config['enabled'] ?? false) === true
-        && ($config['provider'] ?? '') === 'adsense'
-        && preg_match('/^ca-pub-\d{16}$/', $client) === 1;
+        && $providerValid
+        && $clientValid;
 
     return [
         'enabled' => $enabled,
+        'cmpEnabled' => $cmpEnabled,
         'provider' => 'adsense',
-        'client' => $enabled ? $client : '',
+        'client' => ($enabled || $cmpEnabled) ? $client : '',
         'testMode' => $enabled && ($config['test_mode'] ?? false) === true,
     ];
 }

@@ -10,6 +10,7 @@ declare(strict_types=1);
  * approved and configured.
  */
 return [
+    'cmp_enabled' => false,
     'enabled' => false,
     'provider' => 'adsense',
     'client' => 'ca-pub-7481074142505098',

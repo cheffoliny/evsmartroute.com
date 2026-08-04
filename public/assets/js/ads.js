@@ -12,17 +12,27 @@
         return;
     }
 
-    if (!config.enabled || !/^ca-pub-\d{16}$/.test(String(config.client || ''))) return;
+    if (!config.enabled || !config.cmpEnabled || !/^ca-pub-\d{16}$/.test(String(config.client || ''))) return;
 
     let providerPromise = null;
+    let consentGranted = false;
+    let tcfAttached = false;
     const initialisedSlots = new WeakSet();
 
     const loadProvider = () => {
         if (providerPromise) return providerPromise;
         providerPromise = new Promise((resolve, reject) => {
+            const existing = document.querySelector('script[data-evsr-ad-provider="adsense"]');
+            if (existing) {
+                if (window.adsbygoogle) resolve();
+                else existing.addEventListener('load', resolve, { once: true });
+                return;
+            }
+
             const script = document.createElement('script');
             script.async = true;
             script.crossOrigin = 'anonymous';
+            script.dataset.evsrAdProvider = 'adsense';
             script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(config.client)}`;
             script.addEventListener('load', resolve, { once: true });
             script.addEventListener('error', reject, { once: true });
@@ -35,8 +45,8 @@
         placement.hidden = true;
     });
 
-    const initialise = async (consent) => {
-        if (!consent?.advertising) {
+    const initialise = async () => {
+        if (!consentGranted) {
             hidePlacements();
             return;
         }
@@ -66,6 +76,39 @@
         }
     };
 
-    initialise(window.EVSmartRouteConsent);
-    window.addEventListener('evsmartroute:consent', (event) => initialise(event.detail));
+    const setConsent = (granted) => {
+        consentGranted = granted === true;
+        if (!consentGranted) {
+            hidePlacements();
+            return;
+        }
+        initialise();
+    };
+
+    const attachTcfConsent = () => {
+        if (tcfAttached || typeof window.__tcfapi !== 'function') return false;
+        tcfAttached = true;
+        window.__tcfapi('addEventListener', 2, (tcData, success) => {
+            if (!success || !tcData) return;
+            if (tcData.gdprApplies === false) {
+                setConsent(true);
+                return;
+            }
+            const ready = tcData.eventStatus === 'tcloaded' || tcData.eventStatus === 'useractioncomplete';
+            setConsent(ready && tcData.purpose?.consents?.[1] === true);
+        });
+        return true;
+    };
+
+    // Advertising consent is accepted only from the Google-certified TCF CMP.
+    // The local preference banner cannot activate an AdSense placement.
+    if (!attachTcfConsent()) {
+        let attempts = 0;
+        const timer = window.setInterval(() => {
+            attempts += 1;
+            if (attachTcfConsent() || attempts >= 80) window.clearInterval(timer);
+        }, 250);
+    }
+
+    hidePlacements();
 })();
