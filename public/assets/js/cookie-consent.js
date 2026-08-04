@@ -111,12 +111,14 @@
             return true;
         };
 
-        if (attach()) return;
         const timer = window.setInterval(() => {
             attempts += 1;
-            if (attach() || attempts >= 80) {
+            attach();
+
+            const cmpInactive = document.querySelector('iframe[name="googlefcInactive"]') !== null;
+            if (localBannerShown || cmpInactive || attempts >= 120) {
                 window.clearInterval(timer);
-                if (!attached) showLocalBanner();
+                if (!localBannerShown && (cmpInactive || attempts >= 120)) showLocalBanner();
             }
         }, 250);
     };
