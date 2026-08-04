@@ -8,7 +8,17 @@
     const modal = document.getElementById('cookieConsentModal');
     const preferencesInput = document.querySelector('[data-cookie-category="preferences"]');
     const analyticsInput = document.querySelector('[data-cookie-category="analytics"]');
+    const advertisingConfigNode = document.getElementById('evsrAdvertisingConfig');
     let lastFocusedElement = null;
+    let localBannerShown = false;
+
+    const cmpEnabled = (() => {
+        try {
+            return JSON.parse(advertisingConfigNode?.textContent || '{}').cmpEnabled === true;
+        } catch (_) {
+            return false;
+        }
+    })();
 
     const readCookie = (name) => document.cookie
         .split('; ')
@@ -74,6 +84,43 @@
         if (restoreFocus && lastFocusedElement instanceof HTMLElement) lastFocusedElement.focus();
     }
 
+    const showLocalBanner = () => {
+        if (localBannerShown) return;
+        localBannerShown = true;
+        window.setTimeout(() => { banner.hidden = false; }, 350);
+    };
+
+    const showLocalBannerAfterCmp = () => {
+        if (!cmpEnabled) {
+            showLocalBanner();
+            return;
+        }
+
+        let attached = false;
+        let attempts = 0;
+        const attach = () => {
+            if (attached || typeof window.__tcfapi !== 'function') return false;
+            attached = true;
+            window.__tcfapi('addEventListener', 2, (tcData, success) => {
+                if (!success || !tcData) return;
+                const decisionAvailable = tcData.gdprApplies === false
+                    || tcData.eventStatus === 'useractioncomplete'
+                    || (tcData.eventStatus === 'tcloaded' && Boolean(tcData.tcString));
+                if (decisionAvailable) showLocalBanner();
+            });
+            return true;
+        };
+
+        if (attach()) return;
+        const timer = window.setInterval(() => {
+            attempts += 1;
+            if (attach() || attempts >= 80) {
+                window.clearInterval(timer);
+                if (!attached) showLocalBanner();
+            }
+        }, 250);
+    };
+
     document.addEventListener('click', (event) => {
         const trigger = event.target.closest('[data-cookie-action], [data-cookie-settings]');
         if (!trigger) return;
@@ -113,7 +160,7 @@
     if (existingConsent) {
         emitConsent(existingConsent);
     } else {
-        window.setTimeout(() => { banner.hidden = false; }, 500);
+        showLocalBannerAfterCmp();
         emitConsent({ version: CONSENT_VERSION, necessary: true, preferences: false, analytics: false });
     }
 })();

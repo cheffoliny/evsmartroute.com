@@ -7,7 +7,7 @@ declare(strict_types=1);
  * Publisher and slot identifiers are available in the AdSense dashboard.
  */
 return [
-    'cmp_enabled' => false,
+    'cmp_enabled' => true,
     'enabled' => true,
     'client' => 'ca-pub-0000000000000000',
     'test_mode' => true,
