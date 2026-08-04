@@ -9,7 +9,7 @@ $advertisingPublicConfig = advertising_public_config();
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="google-adsense-account" content="ca-pub-7481074142505098">
     <?php if (($advertisingPublicConfig['cmpEnabled'] ?? false) === true && ($advertisingPublicConfig['client'] ?? '') !== ''): ?>
-        <script async data-evsr-ad-provider="adsense" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=<?= e((string) $advertisingPublicConfig['client']) ?>" crossorigin="anonymous"></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=<?= e((string) $advertisingPublicConfig['client']) ?>" crossorigin="anonymous"></script>
     <?php endif; ?>
     <meta name="theme-color" content="#0b0f19">
     <script>

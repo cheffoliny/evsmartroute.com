@@ -22,7 +22,7 @@
     const loadProvider = () => {
         if (providerPromise) return providerPromise;
         providerPromise = new Promise((resolve, reject) => {
-            const existing = document.querySelector('script[data-evsr-ad-provider="adsense"]');
+            const existing = document.querySelector('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]');
             if (existing) {
                 if (window.adsbygoogle) resolve();
                 else existing.addEventListener('load', resolve, { once: true });
@@ -32,7 +32,6 @@
             const script = document.createElement('script');
             script.async = true;
             script.crossOrigin = 'anonymous';
-            script.dataset.evsrAdProvider = 'adsense';
             script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(config.client)}`;
             script.addEventListener('load', resolve, { once: true });
             script.addEventListener('error', reject, { once: true });
